@@ -1,0 +1,19 @@
+# Downloaded applications and upstream dependencies
+/apps/
+/freecad-mcp/
+/aec-cptx-demo/
+
+# Generated CAD artifacts and runtime state
+/*.FCStd
+/HermesSmokeTest.png
+/freecad.log
+/freecad.pid
+
+# Python and editor state
+**/.venv/
+**/__pycache__/
+*.pyc
+.env
+.DS_Store
+.vscode/
+.idea/
