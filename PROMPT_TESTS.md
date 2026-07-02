@@ -81,3 +81,55 @@ Expected: Hermes accurately reports the missing object. This checks that it does
 ```text
 Use only FreeCAD MCP tools. Delete Roof, Level2, Level1, and BaseSlab from PromptTest in that order, one object per call. Call get_objects afterward and confirm the document is empty.
 ```
+
+## 9. Read Blender through Hermes
+
+Start the full stack with `./scripts/start-aes-demo.sh`, then ask:
+
+```text
+Use the Blender MCP get_scene_info tool now. Tell me the exact scene name and list every object name and type. Do not use shell commands and do not guess.
+```
+
+Expected: Hermes reports the live Blender scene using the MCP result.
+
+## 10. Export FreeCAD and import into Blender
+
+```text
+Perform this handoff using MCP tools only and make one tool call at a time.
+First use FreeCAD MCP execute_code to execute:
+exec(compile(open('/home/nvidia/aes-demo/scripts/export-freecad-for-blender.py', encoding='utf-8').read(), '/home/nvidia/aes-demo/scripts/export-freecad-for-blender.py', 'exec'))
+Then use Blender MCP execute_blender_code to execute:
+exec(compile(open('/home/nvidia/aes-demo/scripts/import-freecad-bundle.py', encoding='utf-8').read(), '/home/nvidia/aes-demo/scripts/import-freecad-bundle.py', 'exec'))
+Finally use Blender MCP get_scene_info and verify that BaseSlab, Level1, Level2, and Roof are present. Do not claim success until both scripts and the readback succeed.
+```
+
+Expected: `FREECAD_EXPORT_OK` reports four objects, `BLENDER_IMPORT_OK` reports four objects, and all four names are read back from Blender.
+
+## 11. Render Blender beauty and depth
+
+```text
+Use Blender MCP execute_blender_code to execute exactly:
+exec(compile(open('/home/nvidia/aes-demo/scripts/render-freecad-import.py', encoding='utf-8').read(), '/home/nvidia/aes-demo/scripts/render-freecad-import.py', 'exec'))
+Report the BLENDER_RENDER_OK output. Do not use shell commands.
+```
+
+Expected: `/tmp/aes-demo-render/freecad-beauty.png` and `/tmp/aes-demo-render/freecad-depth.png`. The beauty is 1024x768 RGBA; depth is 1024x768 16-bit grayscale.
+
+## 12. Generate the ComfyUI visualization
+
+This final leg is REST automation rather than MCP. You can run it directly in a terminal:
+
+```bash
+comfyui/.venv/bin/python scripts/comfy-depth-render.py \
+  --prompt "professional architectural visualization, contemporary timber and concrete pavilion, landscaped site, soft daylight"
+```
+
+Or explicitly authorize Hermes to run only that checked-in command:
+
+```text
+Use the terminal tool to run this exact command from /home/nvidia/aes-demo and return its final COMFY_DEPTH_OK line:
+comfyui/.venv/bin/python scripts/comfy-depth-render.py --prompt "professional architectural visualization, contemporary timber and concrete pavilion, landscaped site, soft daylight"
+Do not modify any files or run any other command.
+```
+
+Expected: `COMFY_DEPTH_OK` and a generated PNG under `outputs/comfyui/`.

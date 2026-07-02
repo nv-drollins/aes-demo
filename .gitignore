@@ -1,13 +1,20 @@
 # Downloaded applications and upstream dependencies
 /apps/
 /freecad-mcp/
+/blender-mcp/
 /aec-cptx-demo/
+/comfyui/
 
 # Generated CAD artifacts and runtime state
 /*.FCStd
 /HermesSmokeTest.png
 /freecad.log
 /freecad.pid
+/blender.log
+/blender.pid
+/comfyui.log
+/comfyui.pid
+/outputs/
 
 # Python and editor state
 **/.venv/

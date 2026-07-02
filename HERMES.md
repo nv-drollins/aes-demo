@@ -1,17 +1,19 @@
-# Hermes / FreeCAD MCP smoke-test workspace
+# Hermes workspace instructions
 
-The immediate goal is to verify that Hermes can inspect and control the locally running FreeCAD instance through the `freecad` MCP server.
+This workspace is a fully local FreeCAD -> Blender -> ComfyUI architectural visualization proof of concept on NVIDIA DGX Spark. Inference uses Ollama at `http://localhost:11434/v1` with the tool-capable `qwen3.6:latest`; no cloud model provider is required.
 
-Inference is local through Ollama at `http://localhost:11434/v1` using the
-tool-capable `qwen3.6:latest` model. No cloud model provider is required.
+FreeCAD is the source-of-truth CAD model. Prefer its typed MCP tools for documents, objects, edits, inspection, and views. Use `execute_code` only when a typed tool cannot perform the operation. Never use `execute_code_async` for GUI or document mutations.
 
-For the first test:
+Blender is the rendering/visualization copy. Use its typed scene/object/screenshot tools for inspection and `execute_blender_code` for controlled edits. Code executes inside the live desktop Blender process, so save work before exploratory operations. Do not enable third-party asset services unless the user asks.
 
-1. Confirm the FreeCAD MCP connection by calling `list_documents`.
-2. Create a document named `HermesSmokeTest` if it does not exist.
-3. Create one `Part::Box` named `TestBox` with Length 20, Width 15, and Height 10.
-4. Use `get_object` to verify its dimensions.
-5. Use `get_view` with the Isometric view to inspect the result.
-6. Do not use Blender, ComfyUI, Rhino, OBS, or the Rhino-oriented phase prompts yet.
+For the tested handoff, run these checked-in scripts through the corresponding MCP code tool instead of recreating their logic:
 
-Prefer the typed FreeCAD MCP tools. Use `execute_code` only when a typed tool cannot perform the operation. Never use `execute_code_async` for GUI or document mutations.
+1. FreeCAD: `scripts/export-freecad-for-blender.py`
+2. Blender: `scripts/import-freecad-bundle.py`
+3. Blender: `scripts/render-freecad-import.py`
+
+Verify each success marker before continuing: `FREECAD_EXPORT_OK`, `BLENDER_IMPORT_OK`, and `BLENDER_RENDER_OK`.
+
+ComfyUI is connected through its local REST API, not MCP. Use `scripts/comfy-depth-render.py` only when the user asks for image generation or explicitly requests the complete pipeline. Its graph is `workflows/freecad-depth-api.json`, and its success marker is `COMFY_DEPTH_OK`.
+
+Do not use Rhino. Blender replaces Rhino for rendering in this project.
