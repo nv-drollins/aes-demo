@@ -1,5 +1,7 @@
 # Prompt test ladder
 
+For the optional Rhino-source reverse-engineering test, see [REFERENCE_MODEL_WORKFLOW.md](REFERENCE_MODEL_WORKFLOW.md). It imports the upstream checkout's `.3dm` curve template into an immutable `CliffHouseReference` document and provides audit and rebuild-forward prompts.
+
 Start FreeCAD and Hermes with:
 
 ```bash

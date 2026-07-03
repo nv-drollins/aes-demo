@@ -16,6 +16,7 @@
 /comfyui.log
 /comfyui.pid
 /outputs/
+/source_models/
 
 # Python and editor state
 **/.venv/

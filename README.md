@@ -90,6 +90,16 @@ The ComfyUI installer follows NVIDIA's DGX Spark CUDA 13 approach and downloads 
 
 The MCP code-execution tools can run arbitrary Python inside FreeCAD and Blender. Keep the applications and MCP ports local, save work before exploratory prompts, and inspect unfamiliar code before asking Hermes to execute it. Blender MCP telemetry is disabled in both its add-on preference and MCP process environment.
 
+## Rhino reference curves without Rhino
+
+The upstream Rhino 8 source-curve template can be read locally on the Spark and reconstructed as native FreeCAD reference geometry:
+
+```bash
+./scripts/import-rhino-reference.sh
+```
+
+This uses the open-source `rhino3dm` reader at runtime, preserves layer and curve metadata, converts metres to millimetres, and creates `CliffHouseReference` in the live FreeCAD GUI. See [REFERENCE_MODEL_WORKFLOW.md](REFERENCE_MODEL_WORKFLOW.md) for the Hermes audit and rebuild-forward prompts. The upstream checkout's `.3dm` contains planning/terrain curves rather than a finished building, so this workflow provides a controlled starting reference rather than a one-click final-model conversion.
+
 Downloaded applications, upstream checkouts, model weights, virtual environments, runtime logs, CAD outputs, and generated images are ignored. This public repository contains only reproducible scripts, configuration examples, prompts, and workflow JSON.
 
 ## Upstream projects
