@@ -14,6 +14,17 @@ if collection is None or not collection.objects:
 render_objects = [obj for obj in collection.objects if obj.type == "MESH"]
 if not render_objects:
     raise RuntimeError("The 'FreeCAD Import' collection has no meshes")
+by_freecad_name = {}
+for obj in render_objects:
+    source_name = obj.get("freecad_name")
+    if not source_name:
+        raise RuntimeError(f"Imported object {obj.name!r} has no freecad_name metadata")
+    if source_name in by_freecad_name:
+        raise RuntimeError(
+            f"Duplicate FreeCAD identity {source_name!r}: "
+            f"{by_freecad_name[source_name].name!r} and {obj.name!r}. Re-run the importer."
+        )
+    by_freecad_name[source_name] = obj
 for obj in bpy.context.scene.objects:
     obj.hide_render = obj not in render_objects
 
@@ -56,8 +67,8 @@ def make_area(name, location, energy, size):
     look_at(light, center)
     return light
 
-make_area("FreeCAD Key", center + Vector((1.5, -1.5, 2.0)) * max_dimension, 900, max_dimension * 2)
-make_area("FreeCAD Fill", center + Vector((-1.2, -0.4, 1.0)) * max_dimension, 500, max_dimension * 2)
+make_area("FreeCAD Key", center + Vector((1.5, -1.5, 2.0)) * max_dimension, 35, max_dimension * 2)
+make_area("FreeCAD Fill", center + Vector((-1.2, -0.4, 1.0)) * max_dimension, 15, max_dimension * 2)
 scene.render.engine = "BLENDER_EEVEE"
 scene.render.resolution_x = 1024
 scene.render.resolution_y = 768
@@ -70,7 +81,7 @@ if scene.world is None:
     scene.world = bpy.data.worlds.new("FreeCAD Render World")
 scene.world.use_nodes = True
 scene.world.node_tree.nodes["Background"].inputs["Color"].default_value = (0.035, 0.045, 0.06, 1)
-scene.world.node_tree.nodes["Background"].inputs["Strength"].default_value = 0.35
+scene.world.node_tree.nodes["Background"].inputs["Strength"].default_value = 0.2
 
 view_layer = bpy.context.view_layer
 view_layer.use_pass_z = True

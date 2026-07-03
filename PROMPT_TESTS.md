@@ -127,7 +127,7 @@ comfyui/.venv/bin/python scripts/comfy-depth-render.py --prompt "professional ar
 Do not modify any files or run any other command.
 ```
 
-Expected: `COMFY_DEPTH_OK` and a generated PNG under `outputs/comfyui/`.
+Expected: `COMFY_DEPTH_OK` and a generated PNG under `outputs/comfyui/` showing the stepped building mass with AI-applied material/lighting variation. A blank or flat field indicates that the Blender beauty or depth input did not frame the model.
 
 ## Optional cleanup after completing all 12 steps
 

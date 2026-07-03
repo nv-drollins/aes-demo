@@ -12,17 +12,54 @@ collection = bpy.data.collections.get(collection_name)
 if collection is None:
     collection = bpy.data.collections.new(collection_name)
     bpy.context.scene.collection.children.link(collection)
-else:
-    for old_object in list(collection.objects):
-        bpy.data.objects.remove(old_object, do_unlink=True)
+
+# Remove prior imports even if a previous interrupted run linked one outside the collection.
+stale_objects = set(collection.objects)
+for candidate in bpy.data.objects:
+    if candidate.get("freecad_source_document") == manifest["document"]:
+        stale_objects.add(candidate)
+for old_object in stale_objects:
+    bpy.data.objects.remove(old_object, do_unlink=True)
+
 scale = float(manifest.get("blender_scale", 0.001))
 imported_count = 0
+seen_names = set()
 for item in manifest["objects"]:
-    before = set(bpy.data.objects)
-    bpy.ops.wm.obj_import(filepath=str(BUNDLE_DIR / item["mesh"]))
-    new_objects = list(set(bpy.data.objects) - before)
-    if not new_objects:
-        raise RuntimeError(f"No object imported from {item['mesh']}")
+    source_name = item["freecad_name"]
+    if source_name in seen_names:
+        raise RuntimeError(f"Duplicate FreeCAD identity in manifest: {source_name}")
+    seen_names.add(source_name)
+
+    bpy.ops.object.select_all(action="DESELECT")
+    result = bpy.ops.wm.obj_import(filepath=str(BUNDLE_DIR / item["mesh"]))
+    if "FINISHED" not in result:
+        raise RuntimeError(f"OBJ import failed for {item['mesh']}: {result}")
+    new_objects = list(bpy.context.selected_objects)
+    mesh_objects = [obj for obj in new_objects if obj.type == "MESH"]
+    if len(mesh_objects) != 1:
+        raise RuntimeError(
+            f"Expected one mesh from {item['mesh']}, got "
+            f"{[(obj.name, obj.type) for obj in new_objects]}"
+        )
+    obj = mesh_objects[0]
+    for extra in new_objects:
+        if extra is not obj:
+            bpy.data.objects.remove(extra, do_unlink=True)
+
+    existing = bpy.data.objects.get(item["label"])
+    if existing is not None and existing is not obj:
+        raise RuntimeError(f"Object name collision while importing {item['label']!r}")
+    for owner in list(obj.users_collection):
+        owner.objects.unlink(obj)
+    collection.objects.link(obj)
+    obj.name = item["label"]
+    obj.location = (0.0, 0.0, 0.0)
+    obj.rotation_euler = (0.0, 0.0, 0.0)
+    obj.scale = (scale, scale, scale)
+    obj["freecad_name"] = source_name
+    obj["freecad_type_id"] = item["type_id"]
+    obj["freecad_source_document"] = manifest["document"]
+
     color = item.get("color_rgba", [0.72, 0.72, 0.72, 1.0])
     material_name = f"FreeCAD::{item['label']}"
     material = bpy.data.materials.get(material_name) or bpy.data.materials.new(material_name)
@@ -32,19 +69,14 @@ for item in manifest["objects"]:
     if principled:
         principled.inputs["Base Color"].default_value = color
         principled.inputs["Roughness"].default_value = 0.45
-    for index, obj in enumerate(new_objects, start=1):
-        for owner in list(obj.users_collection):
-            owner.objects.unlink(obj)
-        collection.objects.link(obj)
-        obj.name = item["label"] if index == 1 else f"{item['label']}_{index}"
-        obj.scale = (scale, scale, scale)
-        obj["freecad_name"] = item["freecad_name"]
-        obj["freecad_type_id"] = item["type_id"]
-        obj["freecad_source_document"] = manifest["document"]
-        if obj.type == "MESH":
-            obj.data.materials.clear()
-            obj.data.materials.append(material)
-        imported_count += 1
+    obj.data.materials.clear()
+    obj.data.materials.append(material)
+    if max(obj.dimensions) <= 0:
+        raise RuntimeError(f"Imported mesh {obj.name!r} has zero-size bounds")
+    imported_count += 1
+
+if imported_count != len(manifest["objects"]):
+    raise RuntimeError(f"Imported {imported_count} meshes for {len(manifest['objects'])} manifest objects")
 bpy.context.scene["freecad_manifest"] = str(MANIFEST_PATH)
 bpy.context.scene["freecad_source_document"] = manifest["document"]
 bpy.ops.wm.save_as_mainfile(filepath="/tmp/aes-demo-freecad-import.blend")
