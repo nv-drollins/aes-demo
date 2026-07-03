@@ -76,12 +76,6 @@ Use only FreeCAD MCP tools. Try to inspect an object named DoesNotExist in Promp
 
 Expected: Hermes accurately reports the missing object. This checks that it does not hallucinate success after a tool failure.
 
-## Reset PromptTest
-
-```text
-Use only FreeCAD MCP tools. Delete Roof, Level2, Level1, and BaseSlab from PromptTest in that order, one object per call. Call get_objects afterward and confirm the document is empty.
-```
-
 ## 9. Read Blender through Hermes
 
 Start the full stack with `./scripts/start-aes-demo.sh`, then ask:
@@ -96,7 +90,8 @@ Expected: Hermes reports the live Blender scene using the MCP result.
 
 ```text
 Perform this handoff using MCP tools only and make one tool call at a time.
-First use FreeCAD MCP execute_code to execute:
+First use FreeCAD MCP get_objects on PromptTest and verify that BaseSlab, Level1, Level2, and Roof are all present. If any are missing, stop and report which objects are missing; do not run either script.
+Next use FreeCAD MCP execute_code to execute:
 exec(compile(open('/home/nvidia/aes-demo/scripts/export-freecad-for-blender.py', encoding='utf-8').read(), '/home/nvidia/aes-demo/scripts/export-freecad-for-blender.py', 'exec'))
 Then use Blender MCP execute_blender_code to execute:
 exec(compile(open('/home/nvidia/aes-demo/scripts/import-freecad-bundle.py', encoding='utf-8').read(), '/home/nvidia/aes-demo/scripts/import-freecad-bundle.py', 'exec'))
@@ -133,3 +128,11 @@ Do not modify any files or run any other command.
 ```
 
 Expected: `COMFY_DEPTH_OK` and a generated PNG under `outputs/comfyui/`.
+
+## Optional cleanup after completing all 12 steps
+
+Do not run this during the prompt ladder. It deliberately deletes the four `PromptTest` objects used by steps 10–12.
+
+```text
+Use only FreeCAD MCP tools. Delete Roof, Level2, Level1, and BaseSlab from PromptTest in that order, one object per call. Call get_objects afterward and confirm the document is empty.
+```

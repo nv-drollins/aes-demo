@@ -8,7 +8,8 @@ import Mesh
 
 OUTPUT_DIR = Path(os.environ.get("AES_FREECAD_EXPORT_DIR", "/tmp/aes-demo-freecad-export"))
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-doc = App.ActiveDocument
+DOCUMENT_NAME = os.environ.get("AES_FREECAD_DOCUMENT", "PromptTest")
+doc = App.getDocument(DOCUMENT_NAME) if DOCUMENT_NAME in App.listDocuments() else App.ActiveDocument
 if doc is None:
     raise RuntimeError("FreeCAD has no active document")
 
@@ -49,6 +50,13 @@ for obj in doc.Objects:
             "max": [bounds.XMax, bounds.YMax, bounds.ZMax],
         },
     })
+
+if not objects:
+    inventory = [(obj.Name, obj.TypeId) for obj in doc.Objects]
+    raise RuntimeError(
+        f"FreeCAD document {doc.Name!r} contains no exportable shapes. "
+        f"Open documents: {list(App.listDocuments())}; object inventory: {inventory}"
+    )
 
 manifest = {
     "format": "aes-demo-freecad-bundle-v1",

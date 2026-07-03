@@ -7,6 +7,7 @@
 
 # Generated CAD artifacts and runtime state
 /*.FCStd
+/*.FCBak
 /HermesSmokeTest.png
 /freecad.log
 /freecad.pid
