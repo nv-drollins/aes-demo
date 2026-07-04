@@ -74,6 +74,37 @@ Use FreeCAD MCP tools to reconstruct forward from CliffHouseReference. Never mod
 
 This deliberately separates **observed source facts** from **design assumptions**. Subsequent prompts can add pads, walls, terrain, and roofs one phase at a time, with a checkpoint and readback after each phase.
 
+## Blender and ComfyUI integration demonstration
+
+After the intake/rebuild steps have created the five planning slabs in `CliffHouseRebuild`, keep FreeCAD, Blender, and ComfyUI running and execute:
+
+```bash
+./scripts/run-cliff-house-visualization.py
+```
+
+This one command removes the need to paste Python manually into FreeCAD. It:
+
+1. Rebuilds `TerrainSurface` idempotently from all five imported U/V terrain guides.
+2. Exports five Part slabs plus the terrain mesh and their material roles.
+3. Replaces the prior `FreeCAD Import` collection in Blender, applies site-study materials, and frames the complete 40 × 36 m site.
+4. Renders `/tmp/aes-demo-render/freecad-beauty.png` and `freecad-depth.png`.
+5. Sends both images to the local depth-ControlNet ComfyUI graph and saves the result under `outputs/comfyui/`.
+
+Require these markers in order: `TERRAIN_BUILD_OK`, `FREECAD_EXPORT_OK`, `BLENDER_IMPORT_OK`, `BLENDER_RENDER_OK`, `COMFY_DEPTH_OK`, and `CLIFF_HOUSE_VISUALIZATION_OK`.
+
+To have Hermes drive it, start a fresh phase session and paste:
+
+```text
+Continue the cliff-house workflow with the visualization demonstration. Treat CliffHouseReference as immutable and do not add architectural geometry. First use FreeCAD MCP list_documents and get_objects to verify CliffHouseRebuild contains building_plan_Shell, garage_plan_Shell, driveway_plan_Shell, patio_stairs_plan_Shell, and patio_plan_Shell. If any are missing, stop and report them.
+
+Then use the terminal tool exactly once from /home/nvidia/aes-demo to run:
+./scripts/run-cliff-house-visualization.py
+
+Require and report these real success markers in order: TERRAIN_BUILD_OK, FREECAD_EXPORT_OK, BLENDER_IMPORT_OK, BLENDER_RENDER_OK, COMFY_DEPTH_OK, and CLIFF_HOUSE_VISUALIZATION_OK. After the command succeeds, use Blender MCP get_scene_info and verify the six imported site objects and their names. Report the Blender beauty/depth paths and the ComfyUI output path. Do not describe the ComfyUI image as CAD truth; label it as a depth-constrained concept visualization of the current FreeCAD site geometry.
+```
+
+Use `--skip-comfy` to stop after Blender, or pass `--prompt`, `--negative`, and `--seed` to make a controlled ComfyUI variant.
+
 ## Files and fidelity
 
 - `scripts/extract-rhino-reference.py` preserves object IDs, names, layer paths/colors, source units, closed polyline vertices, NURBS degree/domain/control points/weights/knots, and label locations.

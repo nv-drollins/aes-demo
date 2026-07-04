@@ -16,6 +16,6 @@ For the tested handoff, run these checked-in scripts through the corresponding M
 
 Verify each success marker before continuing: `FREECAD_EXPORT_OK`, `BLENDER_IMPORT_OK`, and `BLENDER_RENDER_OK`.
 
-ComfyUI is connected through its local REST API, not MCP. Use `scripts/comfy-depth-render.py` only when the user asks for image generation or explicitly requests the complete pipeline. Its graph is `workflows/freecad-depth-api.json`, and its success marker is `COMFY_DEPTH_OK`.
+ComfyUI is connected through its local REST API, not MCP. Use `scripts/comfy-depth-render.py` only when the user asks for image generation or explicitly requests the complete pipeline. Its graph is `workflows/freecad-depth-api.json`, and its success marker is `COMFY_DEPTH_OK`. For the rebuilt cliff-house site demonstration, use `scripts/run-cliff-house-visualization.py`; require all six ordered markers through `CLIFF_HOUSE_VISUALIZATION_OK`.
 
 Do not use Rhino. Blender replaces Rhino for rendering in this project.

@@ -67,8 +67,15 @@ def make_area(name, location, energy, size):
     look_at(light, center)
     return light
 
-make_area("FreeCAD Key", center + Vector((1.5, -1.5, 2.0)) * max_dimension, 35, max_dimension * 2)
-make_area("FreeCAD Fill", center + Vector((-1.2, -0.4, 1.0)) * max_dimension, 15, max_dimension * 2)
+make_area("FreeCAD Key", center + Vector((1.5, -1.5, 2.0)) * max_dimension, 1800, max_dimension * 1.5)
+make_area("FreeCAD Fill", center + Vector((-1.2, -0.4, 1.0)) * max_dimension, 700, max_dimension * 1.5)
+sun_data = bpy.data.lights.get("FreeCAD Sun") or bpy.data.lights.new("FreeCAD Sun", "SUN")
+sun = bpy.data.objects.get("FreeCAD Sun") or bpy.data.objects.new("FreeCAD Sun", sun_data)
+if not sun.users_collection:
+    scene.collection.objects.link(sun)
+sun.hide_render = False
+sun.data.energy = 2.5
+sun.rotation_euler = (math.radians(28), math.radians(-18), math.radians(-35))
 scene.render.engine = "BLENDER_EEVEE"
 scene.render.resolution_x = 1024
 scene.render.resolution_y = 768
@@ -81,7 +88,8 @@ if scene.world is None:
     scene.world = bpy.data.worlds.new("FreeCAD Render World")
 scene.world.use_nodes = True
 scene.world.node_tree.nodes["Background"].inputs["Color"].default_value = (0.035, 0.045, 0.06, 1)
-scene.world.node_tree.nodes["Background"].inputs["Strength"].default_value = 0.2
+scene.world.node_tree.nodes["Background"].inputs["Strength"].default_value = 0.45
+scene.view_settings.exposure = 1.0
 
 view_layer = bpy.context.view_layer
 view_layer.use_pass_z = True
