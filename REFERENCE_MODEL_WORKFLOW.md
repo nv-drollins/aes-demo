@@ -89,6 +89,7 @@ This one command removes the need to paste Python manually into FreeCAD. It:
 3. Replaces the prior `FreeCAD Import` collection in Blender, applies site-study materials, and frames the complete 40 × 36 m site.
 4. Renders `/tmp/aes-demo-render/freecad-beauty.png` and `freecad-depth.png`.
 5. Sends both images to the local depth-ControlNet ComfyUI graph and saves the result under `outputs/comfyui/`.
+6. Opens the generated ComfyUI PNG in the desktop image viewer. Pass `--no-show-result` for unattended or headless runs.
 
 Require these markers in order: `TERRAIN_BUILD_OK`, `FREECAD_EXPORT_OK`, `BLENDER_IMPORT_OK`, `BLENDER_RENDER_OK`, `COMFY_DEPTH_OK`, and `CLIFF_HOUSE_VISUALIZATION_OK`.
 

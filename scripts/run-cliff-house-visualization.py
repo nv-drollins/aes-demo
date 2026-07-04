@@ -5,7 +5,10 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 from pathlib import Path
+import re
+import shutil
 import socket
 import subprocess
 import xmlrpc.client
@@ -146,6 +149,14 @@ def main() -> None:
         action="store_true",
         help="Stop after the Blender beauty/depth render",
     )
+    parser.add_argument(
+        "--no-show-result",
+        action="store_true",
+        help=(
+            "Do not open the generated ComfyUI PNG "
+            "in the desktop image viewer"
+        ),
+    )
     args = parser.parse_args()
 
     terrain_script = (
@@ -241,6 +252,48 @@ def main() -> None:
         raise RuntimeError(
             "Missing ComfyUI success marker"
         )
+    output_match = re.search(r"outputs=([^\n]+)", comfy_output)
+    output_paths = (
+        [
+            Path(value)
+            for value in output_match.group(1).split(",")
+        ]
+        if output_match
+        else []
+    )
+    if not args.no_show_result and output_paths:
+        viewer = shutil.which("xdg-open")
+        display_path = output_paths[-1]
+        if viewer and display_path.is_file():
+            desktop_environment = os.environ.copy()
+            uid = os.getuid()
+            desktop_environment.setdefault("DISPLAY", ":1")
+            desktop_environment.setdefault(
+                "XAUTHORITY",
+                f"/run/user/{uid}/gdm/Xauthority",
+            )
+            desktop_environment.setdefault(
+                "DBUS_SESSION_BUS_ADDRESS",
+                f"unix:path=/run/user/{uid}/bus",
+            )
+            opened = subprocess.run(
+                [viewer, str(display_path)],
+                env=desktop_environment,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+                timeout=15,
+                check=False,
+            )
+            if opened.returncode == 0:
+                print(
+                    f"COMFY_RESULT_OPENED={display_path}"
+                )
+            else:
+                print(
+                    "COMFY_RESULT_OPEN_WARNING="
+                    f"xdg-open exited {opened.returncode}; "
+                    f"open {display_path} manually"
+                )
     print(
         "CLIFF_HOUSE_VISUALIZATION_OK "
         f"beauty={beauty} depth={depth}"
