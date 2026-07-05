@@ -2,6 +2,25 @@
 
 The upstream `base_model.3dm` is a Rhino 8 **source-curve template**, not a finished building. It contains five closed plan polylines, five cubic NURBS terrain/grid curves, and six labels on 11 layers. The local bridge preserves those layers and curve definitions in a FreeCAD reference document so Hermes can inspect the design intent and rebuild forward without Rhino.
 
+## Recording a clean end-to-end demo
+
+Run the presentation reset **before closing the currently running applications** so it can clean their live state:
+
+```bash
+cd /home/nvidia/aes-demo
+./scripts/reset-recording-demo.py
+```
+
+This archives prior FreeCAD models, Blender renders/bundles, and ComfyUI inputs/outputs under a timestamped `outputs/demo-archives/` folder. It then closes the four known demo documents, empties the Blender scene, and clears ComfyUI history. It does not stop any application or delete the archive.
+
+After the reset reports `RECORDING_DEMO_RESET_OK`, close FreeCAD, Blender, ComfyUI, Hermes, and any open image viewer normally. Begin the recording from a terminal in the project directory and run:
+
+```bash
+./scripts/start-aes-demo.sh
+```
+
+Follow the Hermes-driven intake prompt in the next section. Use a fresh Hermes session for each approved modeling phase. When the workflow reaches the visualization demonstration, `run-cliff-house-visualization.py` clears Blender's default cube and unrelated scene objects before importing, preventing stale geometry from hiding the site. Pass `--preserve-blender-scene` only when retaining an existing Blender scene is intentional.
+
 ## Recommended test: let Hermes drive the import
 
 Reset only this workflow's generated state, then start the full local stack:

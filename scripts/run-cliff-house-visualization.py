@@ -157,6 +157,14 @@ def main() -> None:
             "in the desktop image viewer"
         ),
     )
+    parser.add_argument(
+        "--preserve-blender-scene",
+        action="store_true",
+        help=(
+            "Keep unrelated Blender objects instead "
+            "of starting the demo import clean"
+        ),
+    )
     args = parser.parse_args()
 
     terrain_script = (
@@ -190,6 +198,11 @@ def main() -> None:
         ROOT / "scripts" / "import-freecad-bundle.py",
         {
             "AES_FREECAD_EXPORT_DIR": str(BUNDLE_DIR),
+            "AES_BLENDER_CLEAR_SCENE": (
+                "0"
+                if args.preserve_blender_scene
+                else "1"
+            ),
         },
     )
     if "BLENDER_IMPORT_OK=" not in import_output:

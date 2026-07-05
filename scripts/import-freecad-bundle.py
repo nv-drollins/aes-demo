@@ -23,6 +23,17 @@ if collection is None:
     collection = bpy.data.collections.new(collection_name)
     bpy.context.scene.collection.children.link(collection)
 
+clear_scene = os.environ.get(
+    "AES_BLENDER_CLEAR_SCENE",
+    "0",
+).lower() in {"1", "true", "yes"}
+if clear_scene:
+    for candidate in list(bpy.data.objects):
+        bpy.data.objects.remove(candidate, do_unlink=True)
+    for material in list(bpy.data.materials):
+        if material.name.startswith(("AEC::", "FreeCAD::")):
+            bpy.data.materials.remove(material)
+
 # Remove prior imports even if an interrupted run linked one elsewhere.
 stale_objects = set(collection.objects)
 for candidate in bpy.data.objects:
@@ -179,5 +190,6 @@ bpy.ops.wm.save_as_mainfile(
 print(
     f"BLENDER_IMPORT_OK={MANIFEST_PATH} "
     f"objects={imported_count} "
+    f"clean_scene={clear_scene} "
     f"roles={sorted({item.get('material_role', 'generic') for item in manifest['objects']})}"
 )
