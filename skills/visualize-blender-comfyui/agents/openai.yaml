@@ -1,0 +1,4 @@
+interface:
+  display_name: "Visualize with Blender and ComfyUI"
+  short_description: "Render Blender scenes and run local ComfyUI"
+  default_prompt: "Use $visualize-blender-comfyui to render the approved Blender scene and create a depth-constrained concept image."

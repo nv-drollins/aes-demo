@@ -35,7 +35,7 @@ Wait for FreeCAD, Blender, and ComfyUI health checks to pass and for the interac
 Paste this into Hermes:
 
 ```text
-Run the cliff-house reference intake using the checked project scripts. Rhino is replaced by FreeCAD; never call Rhino, RhinoMCP, or RhinoCommon.
+Use the `ingest-rhino-reference` skill for this phase. Run the cliff-house reference intake using the checked project scripts. Rhino is replaced by FreeCAD; never call Rhino, RhinoMCP, or RhinoCommon.
 
 First read /home/nvidia/aes-demo/HERMES.md. Then use the terminal tool exactly once from /home/nvidia/aes-demo to run:
 /home/nvidia/aes-demo/scripts/import-rhino-reference.sh
@@ -60,7 +60,7 @@ Let Hermes finish. Prompt 1 is successful when it reports both import markers an
 Paste this into the same Hermes session:
 
 ```text
-Continue with the editable site-plan rebuild. Never modify CliffHouseReference.
+Use the `rebuild-freecad-reference` skill for this phase. Continue with the editable site-plan rebuild. Never modify CliffHouseReference.
 
 Use FreeCAD MCP tools to inspect the five closed PolylineCurve reference objects in CliffHouseReference. Identify the building, garage, driveway, patio stairs, and patio footprints from their RhinoObjectName and RhinoLayerPath metadata. Report their source objects, bounding boxes, and base elevations. Do not modify CliffHouseReference.
 
@@ -87,7 +87,7 @@ Keep FreeCAD visible while Hermes works. Prompt 2 is successful when the five pl
 Paste this into the same Hermes session:
 
 ```text
-Run the checked visualization pipeline for CliffHouseRebuild.
+Use the `handoff-freecad-blender` and `visualize-blender-comfyui` skills for this phase. Run the checked visualization pipeline for CliffHouseRebuild.
 
 First use FreeCAD MCP get_objects and verify that CliffHouseRebuild contains exactly these required site objects:
 building_plan_Shell
@@ -104,6 +104,7 @@ TERRAIN_BUILD_OK
 FREECAD_EXPORT_OK
 BLENDER_IMPORT_OK
 BLENDER_RENDER_OK
+COMFY_IMAGE_OK
 COMFY_DEPTH_OK
 COMFY_RESULT_OPENED
 CLIFF_HOUSE_VISUALIZATION_OK
@@ -111,7 +112,7 @@ CLIFF_HOUSE_VISUALIZATION_OK
 After the command succeeds, use Blender MCP get_scene_info and confirm that Blender contains the five site-plan objects plus Terrain Surface. Report the Blender beauty/depth paths and the generated ComfyUI output path. Describe the ComfyUI result as a depth-constrained concept visualization, not CAD geometry.
 ```
 
-The pipeline clears stale Blender objects, builds the terrain from the five Rhino NURBS guides, exports the FreeCAD site, assigns Blender materials and lighting, renders beauty and depth images, runs local ComfyUI, and opens the generated PNG automatically.
+The pipeline clears stale Blender objects, builds the terrain from the five Rhino NURBS guides, exports the FreeCAD site, assigns Blender materials and lighting, renders beauty and depth images, runs local ComfyUI, validates that the returned PNG is non-blank, and opens the exact validated image automatically.
 
 ## Step 6 — Show the final results
 

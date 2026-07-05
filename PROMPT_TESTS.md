@@ -124,12 +124,12 @@ comfyui/.venv/bin/python scripts/comfy-depth-render.py \
 Or explicitly authorize Hermes to run only that checked-in command:
 
 ```text
-Use the terminal tool to run this exact command from /home/nvidia/aes-demo and return its final COMFY_DEPTH_OK line:
+Use the terminal tool to run this exact command from /home/nvidia/aes-demo and return its COMFY_IMAGE_OK and final COMFY_DEPTH_OK lines:
 comfyui/.venv/bin/python scripts/comfy-depth-render.py --prompt "professional architectural visualization, contemporary timber and concrete pavilion, landscaped site, soft daylight"
 Do not modify any files or run any other command.
 ```
 
-Expected: `COMFY_DEPTH_OK` and a generated PNG under `outputs/comfyui/` showing the stepped building mass with AI-applied material/lighting variation. A blank or flat field indicates that the Blender beauty or depth input did not frame the model.
+Expected: `COMFY_IMAGE_OK`, then `COMFY_DEPTH_OK`, and a generated PNG under `outputs/comfyui/` showing the stepped building mass with AI-applied material/lighting variation. A blank or nearly uniform result now fails before `COMFY_DEPTH_OK`; inspect the Blender beauty/depth inputs or ComfyUI history.
 
 ## Optional cleanup after completing all 12 steps
 

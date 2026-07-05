@@ -2,6 +2,15 @@
 
 This workspace is a fully local FreeCAD -> Blender -> ComfyUI architectural visualization proof of concept on NVIDIA DGX Spark. Inference uses Ollama at `http://localhost:11434/v1` with the tool-capable `qwen3.6:latest`; no cloud model provider is required.
 
+The repository's native Hermes skills live under `/home/nvidia/aes-demo/skills` and are registered through `skills.external_dirs`. Load the relevant skill before each phase:
+
+- `ingest-rhino-reference` for immutable .3dm intake and audit
+- `rebuild-freecad-reference` for source-derived editable FreeCAD geometry
+- `handoff-freecad-blender` for the checked mesh/metadata bridge
+- `visualize-blender-comfyui` for rendering, image validation, and presentation
+
+A skill's phase boundary and verification rules take precedence over ad-hoc code generation. The current cliff-house adapters remain project-specific; do not describe them as universal Rhino conversion.
+
 FreeCAD is the source-of-truth CAD model. Prefer its typed MCP tools for documents, objects, edits, inspection, and views. Use `execute_code` only when a typed tool cannot perform the operation. Never use `execute_code_async` for GUI or document mutations.
 
 `CliffHouseReference`, when present, is an immutable source-reference document imported from the upstream Rhino curve template. Never edit, delete, or add objects in that document. Audit it first, distinguish observed geometry from assumptions, and reconstruct editable features in a separate `CliffHouseRebuild` document.
@@ -22,6 +31,6 @@ For the tested handoff, run these checked-in scripts through the corresponding M
 
 Verify each success marker before continuing: `FREECAD_EXPORT_OK`, `BLENDER_IMPORT_OK`, and `BLENDER_RENDER_OK`.
 
-ComfyUI is connected through its local REST API, not MCP. Use `scripts/comfy-depth-render.py` only when the user asks for image generation or explicitly requests the complete pipeline. Its graph is `workflows/freecad-depth-api.json`, and its success marker is `COMFY_DEPTH_OK`. For the rebuilt cliff-house site demonstration, use `scripts/run-cliff-house-visualization.py`; require all six ordered markers through `CLIFF_HOUSE_VISUALIZATION_OK`.
+ComfyUI is connected through its local REST API, not MCP. Use `scripts/comfy-depth-render.py` only when the user asks for image generation or explicitly requests the complete pipeline. Its graph is `workflows/freecad-depth-api.json`. Require `COMFY_IMAGE_OK` before `COMFY_DEPTH_OK`; the first marker proves the downloaded image decoded successfully and is not blank or nearly uniform. For the rebuilt cliff-house site demonstration, use `scripts/run-cliff-house-visualization.py`; require all ordered markers through `CLIFF_HOUSE_VISUALIZATION_OK`. A valid file and a visible popup are separate gates: require both `COMFY_IMAGE_OK` and `COMFY_RESULT_OPENED`.
 
 Do not use Rhino. Blender replaces Rhino for rendering in this project.

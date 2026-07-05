@@ -3,6 +3,7 @@ set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
+"$ROOT/scripts/register-hermes-skills.py"
 "$ROOT/scripts/start-freecad.sh"
 
 for _ in $(seq 1 30); do

@@ -1,14 +1,68 @@
 #!/usr/bin/env python3
 """Submit Blender beauty/depth renders to the local ComfyUI depth-ControlNet graph."""
 import argparse
+from io import BytesIO
 import json
 from pathlib import Path
 import time
 import uuid
 import requests
+from PIL import Image, ImageStat
 
 BASE_URL = "http://127.0.0.1:8188"
 ROOT = Path(__file__).resolve().parent.parent
+
+
+def validate_image_bytes(content, label):
+    if not content:
+        raise RuntimeError(f"ComfyUI returned an empty image for {label}")
+    try:
+        with Image.open(BytesIO(content)) as probe:
+            probe.verify()
+        with Image.open(BytesIO(content)) as decoded:
+            width, height = decoded.size
+            rgb = decoded.convert("RGB")
+    except Exception as exc:
+        raise RuntimeError(
+            f"ComfyUI returned an invalid image for {label}: {exc}"
+        ) from exc
+    if width < 64 or height < 64:
+        raise RuntimeError(
+            f"ComfyUI image is unexpectedly small: {width}x{height}"
+        )
+    statistics = ImageStat.Stat(rgb)
+    means = tuple(float(value) for value in statistics.mean)
+    deviations = tuple(float(value) for value in statistics.stddev)
+    extrema = rgb.getextrema()
+    dynamic_range = max(high for _, high in extrema) - min(
+        low for low, _ in extrema
+    )
+    if max(deviations) < 1.0 or dynamic_range < 8:
+        raise RuntimeError(
+            "ComfyUI image appears blank or nearly uniform: "
+            f"mean={means} stddev={deviations} range={dynamic_range}"
+        )
+    return {
+        "width": width,
+        "height": height,
+        "mean": means,
+        "stddev": deviations,
+        "dynamic_range": dynamic_range,
+    }
+
+
+def report_image_ok(path, statistics):
+    mean = ",".join(f"{value:.2f}" for value in statistics["mean"])
+    stddev = ",".join(
+        f"{value:.2f}" for value in statistics["stddev"]
+    )
+    print(
+        f"COMFY_IMAGE_OK={path} "
+        f"size={statistics['width']}x{statistics['height']} "
+        f"mean_rgb=[{mean}] stddev_rgb=[{stddev}] "
+        f"range={statistics['dynamic_range']}"
+    )
+
 
 def upload(path, remote_name):
     with path.open("rb") as image:
@@ -33,7 +87,19 @@ def main():
     parser.add_argument("--control-end", type=float, default=1.0)
     parser.add_argument("--denoise", type=float, default=0.55)
     parser.add_argument("--output-dir", type=Path, default=ROOT / "outputs" / "comfyui")
+    parser.add_argument(
+        "--validate-only",
+        type=Path,
+        help="Validate an existing generated image without calling ComfyUI",
+    )
     args = parser.parse_args()
+    if args.validate_only:
+        statistics = validate_image_bytes(
+            args.validate_only.read_bytes(),
+            str(args.validate_only),
+        )
+        report_image_ok(args.validate_only, statistics)
+        return
     graph = json.loads((ROOT / "workflows" / "freecad-depth-api.json").read_text())
     graph["4"]["inputs"]["image"] = upload(args.beauty, "freecad-beauty.png")
     graph["7"]["inputs"]["image"] = upload(args.depth, "freecad-depth.png")
@@ -65,9 +131,17 @@ def main():
         args.output_dir.mkdir(parents=True, exist_ok=True)
         saved = []
         for image in images:
-            content = requests.get(f"{BASE_URL}/view", params=image, timeout=120).content
+            view_response = requests.get(
+                f"{BASE_URL}/view", params=image, timeout=120
+            )
+            view_response.raise_for_status()
+            content = view_response.content
             path = args.output_dir / image["filename"]
-            path.write_bytes(content)
+            statistics = validate_image_bytes(content, str(path))
+            temporary = path.with_suffix(path.suffix + ".tmp")
+            temporary.write_bytes(content)
+            temporary.replace(path)
+            report_image_ok(path, statistics)
             saved.append(str(path))
         print(f"COMFY_DEPTH_OK prompt_id={prompt_id} outputs={','.join(saved)}")
         return

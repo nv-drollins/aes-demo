@@ -1,0 +1,4 @@
+interface:
+  display_name: "Handoff FreeCAD to Blender"
+  short_description: "Validate and transfer FreeCAD scenes to Blender"
+  default_prompt: "Use $handoff-freecad-blender to validate and transfer the active FreeCAD model into Blender."

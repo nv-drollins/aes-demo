@@ -11,6 +11,7 @@ import re
 import shutil
 import socket
 import subprocess
+import time
 import xmlrpc.client
 
 
@@ -262,10 +263,11 @@ def main() -> None:
     comfy_output = completed.stdout.strip()
     if comfy_output:
         print(comfy_output)
-    if "COMFY_DEPTH_OK" not in comfy_output:
-        raise RuntimeError(
-            "Missing ComfyUI success marker"
-        )
+    for marker in ("COMFY_IMAGE_OK=", "COMFY_DEPTH_OK"):
+        if marker not in comfy_output:
+            raise RuntimeError(
+                f"Missing ComfyUI success marker: {marker}"
+            )
     output_match = re.search(r"outputs=([^\n]+)", comfy_output)
     output_paths = (
         [
@@ -276,9 +278,8 @@ def main() -> None:
         else []
     )
     if not args.no_show_result and output_paths:
-        viewer = shutil.which("xdg-open")
         display_path = output_paths[-1]
-        if viewer and display_path.is_file():
+        if display_path.is_file():
             desktop_environment = os.environ.copy()
             uid = os.getuid()
             desktop_environment.setdefault("DISPLAY", ":1")
@@ -290,23 +291,41 @@ def main() -> None:
                 "DBUS_SESSION_BUS_ADDRESS",
                 f"unix:path=/run/user/{uid}/bus",
             )
-            opened = subprocess.run(
-                [viewer, str(display_path)],
-                env=desktop_environment,
-                stdout=subprocess.DEVNULL,
-                stderr=subprocess.DEVNULL,
-                timeout=15,
-                check=False,
-            )
-            if opened.returncode == 0:
+            viewer_commands = []
+            eog = shutil.which("eog")
+            if eog:
+                viewer_commands.append(
+                    ([eog, "--new-instance", str(display_path)], "eog")
+                )
+            xdg_open = shutil.which("xdg-open")
+            if xdg_open:
+                viewer_commands.append(
+                    ([xdg_open, str(display_path)], "xdg-open")
+                )
+            opened_with = None
+            for command, viewer_name in viewer_commands:
+                process = subprocess.Popen(
+                    command,
+                    env=desktop_environment,
+                    stdout=subprocess.DEVNULL,
+                    stderr=subprocess.DEVNULL,
+                    start_new_session=True,
+                )
+                time.sleep(1.0)
+                return_code = process.poll()
+                if return_code is None or return_code == 0:
+                    opened_with = viewer_name
+                    break
+            if opened_with:
                 print(
-                    f"COMFY_RESULT_OPENED={display_path}"
+                    f"COMFY_RESULT_OPENED={display_path} "
+                    f"viewer={opened_with}"
                 )
             else:
                 print(
                     "COMFY_RESULT_OPEN_WARNING="
-                    f"xdg-open exited {opened.returncode}; "
-                    f"open {display_path} manually"
+                    f"no image viewer accepted {display_path}; "
+                    "open it manually"
                 )
     print(
         "CLIFF_HOUSE_VISUALIZATION_OK "

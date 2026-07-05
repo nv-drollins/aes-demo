@@ -37,6 +37,14 @@ cd /home/nvidia/aes-demo
 
 This starts FreeCAD, Blender, and ComfyUI, verifies all three local endpoints, then opens standard Hermes chat. ComfyUI is available in the Spark browser at <http://127.0.0.1:8188>.
 
+The stack launcher registers the source-controlled skill library with Hermes automatically. To register it without starting the applications, run:
+
+```bash
+./scripts/register-hermes-skills.py
+```
+
+The repository currently provides four phase skills: `ingest-rhino-reference`, `rebuild-freecad-reference`, `handoff-freecad-blender`, and `visualize-blender-comfyui`. They appear in Hermes skill search and slash-command completion after restarting Hermes or running `/reload-skills`.
+
 Use `hermes chat`, not `hermes -z`, for MCP work with Hermes 0.18.0. The one-shot path can snapshot tools before background MCP discovery finishes.
 
 Individual services and checks:

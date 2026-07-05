@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ingest Rhino Reference"
+  short_description: "Import and audit Rhino references in FreeCAD"
+  default_prompt: "Use $ingest-rhino-reference to import and audit this Rhino reference in FreeCAD."

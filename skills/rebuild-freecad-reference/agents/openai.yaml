@@ -1,0 +1,4 @@
+interface:
+  display_name: "Rebuild FreeCAD Reference"
+  short_description: "Derive editable FreeCAD geometry from references"
+  default_prompt: "Use $rebuild-freecad-reference to derive an editable FreeCAD model from the approved reference."
