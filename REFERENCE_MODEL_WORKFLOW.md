@@ -56,29 +56,18 @@ Paste this into the same Hermes session:
 ```text
 Continue with the editable site-plan rebuild. Never modify CliffHouseReference.
 
-Use FreeCAD MCP tools to create a new document named CliffHouseRebuild. Create these five Part::Box objects one at a time, using millimetres:
+Use FreeCAD MCP tools to inspect the five closed PolylineCurve reference objects in CliffHouseReference. Identify the building, garage, driveway, patio stairs, and patio footprints from their RhinoObjectName and RhinoLayerPath metadata. Read their exact vertices and source elevations; if the typed inspection tools do not expose vertex coordinates, use read-only execute_code to extract them from each source Shape. Do not use dimensions or coordinates supplied by me.
 
-1. building_plan_Shell
-   Placement: x=1500, y=-15500, z=0
-   Length=12000, Width=20000, Height=50
+Create a new document named CliffHouseRebuild. For each source footprint, reproduce its exact closed wire as a Part::Feature and extrude it 50 mm upward as a thin visualization slab. The 50 mm thickness is the only demo convention; every X, Y, and base-Z value must be derived from the imported source curve.
 
-2. garage_plan_Shell
-   Placement: x=7000, y=4500, z=0
-   Length=10000, Width=10500, Height=50
+Use these output names because the checked visualization pipeline consumes them:
+- building_plan_Shell
+- garage_plan_Shell
+- driveway_plan_Shell
+- patio_stairs_plan_Shell
+- patio_plan_Shell
 
-3. driveway_plan_Shell
-   Placement: x=17000, y=6500, z=0
-   Length=8000, Width=7000, Height=50
-
-4. patio_stairs_plan_Shell
-   Placement: x=-3000, y=-3000, z=0
-   Length=4000, Width=2000, Height=50
-
-5. patio_plan_Shell
-   Placement: x=-6000, y=-16000, z=-1000
-   Length=6000, Width=21000, Height=50
-
-After creating them, call get_objects and verify all five exact names, placements, and dimensions. Show an Isometric fitted view of CliffHouseRebuild and stop. Do not create terrain manually and do not add walls, roofs, or other architecture.
+After creating them, call get_objects and verify all five names. Read back and report each slab's derived source object, base elevation, footprint dimensions, and bounding box. Show an Isometric fitted view of CliffHouseRebuild and stop. Do not create terrain manually and do not add walls, roofs, or other architecture.
 ```
 
 Keep FreeCAD visible while Hermes works. Prompt 2 is successful when the five planning slabs are visible in `CliffHouseRebuild`.
