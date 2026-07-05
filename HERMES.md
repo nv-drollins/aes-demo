@@ -4,7 +4,9 @@ This workspace is a fully local FreeCAD -> Blender -> ComfyUI architectural visu
 
 FreeCAD is the source-of-truth CAD model. Prefer its typed MCP tools for documents, objects, edits, inspection, and views. Use `execute_code` only when a typed tool cannot perform the operation. Never use `execute_code_async` for GUI or document mutations.
 
-`CliffHouseReference`, when present, is an immutable source-reference document imported from the upstream Rhino curve template. Never edit, delete, or add objects in that document. Audit it first, distinguish observed geometry from assumptions, and reconstruct editable features in a separate `CliffHouseRebuild` document. The checked-in import script is `scripts/import-rhino-reference-freecad.py`; its success marker is `FREECAD_REFERENCE_IMPORT_OK`.
+`CliffHouseReference`, when present, is an immutable source-reference document imported from the upstream Rhino curve template. Never edit, delete, or add objects in that document. Audit it first, distinguish observed geometry from assumptions, and reconstruct editable features in a separate `CliffHouseRebuild` document.
+
+The only supported Hermes import entrypoint is `/home/nvidia/aes-demo/scripts/import-rhino-reference.sh`, run with the terminal tool. That wrapper runs `extract-rhino-reference.py` and then executes the internal `import-rhino-reference-freecad.py` inside the live FreeCAD process. Do not launch the internal Python file directly, do not interpret `scripts/` as `/scripts/`, and do not search for `import-rhino-reference-freecad.sh` because no such file exists. Require both `RHINO_REFERENCE_EXTRACT_OK` and `FREECAD_REFERENCE_IMPORT_OK`.
 
 Blender is the rendering/visualization copy. Use its typed scene/object/screenshot tools for inspection and `execute_blender_code` for controlled edits. Code executes inside the live desktop Blender process, so save work before exploratory operations. Do not enable third-party asset services unless the user asks.
 

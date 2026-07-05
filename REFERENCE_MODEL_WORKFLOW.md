@@ -38,7 +38,9 @@ Paste this into Hermes:
 Run the cliff-house reference intake using the checked project scripts. Rhino is replaced by FreeCAD; never call Rhino, RhinoMCP, or RhinoCommon.
 
 First read /home/nvidia/aes-demo/HERMES.md. Then use the terminal tool exactly once from /home/nvidia/aes-demo to run:
-./scripts/import-rhino-reference.sh
+/home/nvidia/aes-demo/scripts/import-rhino-reference.sh
+
+This absolute wrapper path is the only import command. Do not run `import-rhino-reference-freecad.py` directly and do not look for an `import-rhino-reference-freecad.sh` file.
 
 Require RHINO_REFERENCE_EXTRACT_OK and FREECAD_REFERENCE_IMPORT_OK. If either marker is missing, stop and report the real error.
 
@@ -87,7 +89,7 @@ patio_stairs_plan_Shell
 patio_plan_Shell
 
 If any are missing, stop and report them. Otherwise use the terminal tool exactly once from /home/nvidia/aes-demo to run:
-./scripts/run-cliff-house-visualization.py
+/home/nvidia/aes-demo/scripts/run-cliff-house-visualization.py
 
 Report these real success markers in order:
 TERRAIN_BUILD_OK
