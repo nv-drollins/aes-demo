@@ -96,6 +96,14 @@ Report each object's group, role, source references, and bounds. Explain the ups
 
 Prompt 3 succeeds when the three-level cantilevered house is visible and you approve its proportions.
 
+Review the Front, Right, and Isometric views. If the massing looks correct, type this into the same Hermes session:
+
+```text
+Approved.
+```
+
+Wait for Hermes to acknowledge the approval, then continue to Step 6. If the massing does not look correct, describe the problem instead of approving it.
+
 ## Step 6 — Prompt 4: run Blender and ComfyUI
 
 Paste this into the same Hermes session:
