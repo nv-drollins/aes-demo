@@ -1,0 +1,4 @@
+interface:
+  display_name: "Build FreeCAD Massing"
+  short_description: "Build checked architectural massing in FreeCAD"
+  default_prompt: "Use $build-freecad-massing to create and review the approved house massing in FreeCAD."

@@ -58,6 +58,18 @@ role_materials = {
         "color": (0.48, 0.50, 0.53, 1.0),
         "roughness": 0.68,
     },
+    "building_mass": {
+        "color": (0.78, 0.75, 0.68, 1.0),
+        "roughness": 0.70,
+    },
+    "balcony_slab": {
+        "color": (0.50, 0.48, 0.44, 1.0),
+        "roughness": 0.78,
+    },
+    "roof_slab": {
+        "color": (0.12, 0.13, 0.15, 1.0),
+        "roughness": 0.64,
+    },
     "driveway": {
         "color": (0.055, 0.06, 0.07, 1.0),
         "roughness": 0.82,

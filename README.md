@@ -24,7 +24,7 @@ Rhino is not required. No cloud inference account or model API key is required.
 - Blender 4.0.2 and 22 Blender MCP tools
 - PyTorch 2.12.1 + CUDA 13.0 in an isolated ComfyUI environment
 - Hermes read/write/render tests against both desktop applications
-- Four live FreeCAD objects exported and imported into Blender with names, types, colors, bounds, and unit scale
+- Seventeen FreeCAD geometry objects exported to Blender: five site elements, eleven house-massing solids, and terrain, with names, roles, bounds, and unit scale preserved
 - 1024x768 Blender beauty image and 16-bit depth pass
 - ComfyUI upload, queue, history, output retrieval, and a real 768x576 depth-ControlNet generation
 
@@ -43,7 +43,7 @@ The stack launcher registers the source-controlled skill library with Hermes aut
 ./scripts/register-hermes-skills.py
 ```
 
-The repository currently provides four phase skills: `ingest-rhino-reference`, `rebuild-freecad-reference`, `handoff-freecad-blender`, and `visualize-blender-comfyui`. They appear in Hermes skill search and slash-command completion after restarting Hermes or running `/reload-skills`.
+The repository currently provides five phase skills: `ingest-rhino-reference`, `rebuild-freecad-reference`, `build-freecad-massing`, `handoff-freecad-blender`, and `visualize-blender-comfyui`. They appear in Hermes skill search and slash-command completion after restarting Hermes or running `/reload-skills`.
 
 Use `hermes chat`, not `hermes -z`, for MCP work with Hermes 0.18.0. The one-shot path can snapshot tools before background MCP discovery finishes.
 
@@ -62,7 +62,7 @@ hermes mcp test blender
 
 ## Run the pipeline
 
-Use the prompt ladder in [PROMPT_TESTS.md](PROMPT_TESTS.md) to build and verify a FreeCAD massing model. The bridge is made of three scripts designed to be invoked by Hermes through the relevant MCP:
+Use [REFERENCE_MODEL_WORKFLOW.md](REFERENCE_MODEL_WORKFLOW.md) for the recorded end-to-end cliff-house demo, including the checked 11-object massing port. Use [PROMPT_TESTS.md](PROMPT_TESTS.md) for smaller component smoke tests. The bridge is made of three scripts designed to be invoked by Hermes through the relevant MCP:
 
 1. `scripts/export-freecad-for-blender.py` runs inside FreeCAD and writes individual OBJ meshes plus `manifest.json` to `/tmp/aes-demo-freecad-export`.
 2. `scripts/import-freecad-bundle.py` runs inside Blender, imports the bundle into the `FreeCAD Import` collection, preserves metadata as custom properties, converts millimetres to metres, and saves `/tmp/aes-demo-freecad-import.blend`.

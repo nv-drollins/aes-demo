@@ -78,11 +78,13 @@ for obj in doc.Objects:
     shape = getattr(obj, "Shape", None)
     mesh = getattr(obj, "Mesh", None)
     has_shape = (
-        shape is not None
+        obj.TypeId.startswith("Part::")
+        and shape is not None
         and not shape.isNull()
     )
     has_mesh = (
-        mesh is not None
+        obj.TypeId.startswith("Mesh::")
+        and mesh is not None
         and getattr(mesh, "CountFacets", 0) > 0
     )
     if not has_shape and not has_mesh:

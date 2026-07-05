@@ -1,0 +1,141 @@
+{
+  "format": "aes-demo-freecad-massing-v1",
+  "id": "cliff-house-upstream-massing-v1",
+  "title": "Cliff House 02 upstream massing port",
+  "source_units": "metres",
+  "scale_to_mm": 1000.0,
+  "translation_mm": [0.0, 0.0, -200.0],
+  "provenance": {
+    "repository": "stwagstaff/2026_aec_cptx_demo",
+    "commit": "09b15e6c9a74b4a018587420eaaa2f5e273fd447",
+    "file": "hermes/DEMO_RULES.md",
+    "section": "What Has Been Built / massing_v3",
+    "note": "The public repository contains no committed builder for House_02_massing. These eleven boxes transcribe the recorded massing_v3 bounds. The Z translation maps the upstream 250 mm site-pad datum to this demo's 50 mm planning-slab top."
+  },
+  "reference_checks": [
+    {
+      "object": "Rhino_000_building_plan",
+      "bounds_mm": {
+        "min": [1500.0, -15500.0, 0.0],
+        "max": [13500.0, 4500.0, 0.0]
+      }
+    },
+    {
+      "object": "Rhino_002_garage_plan",
+      "bounds_mm": {
+        "min": [7000.0, 4500.0, 0.0],
+        "max": [17000.0, 15000.0, 0.0]
+      }
+    }
+  ],
+  "groups": [
+    {"name": "Massing_L1", "label": "Massing / Level 1"},
+    {"name": "Massing_L2", "label": "Massing / Level 2"},
+    {"name": "Massing_L2_Balconies", "label": "Massing / Level 2 Balconies"},
+    {"name": "Massing_L2_Roofs", "label": "Massing / Level 2 Roofs"},
+    {"name": "Massing_L3", "label": "Massing / Level 3"},
+    {"name": "Massing_L3_Balconies", "label": "Massing / Level 3 Balconies"},
+    {"name": "Massing_L3_Roofs", "label": "Massing / Level 3 Roofs"}
+  ],
+  "objects": [
+    {
+      "name": "L1_east",
+      "group": "Massing_L1",
+      "role": "building_mass",
+      "upstream_layer": "massing_v3::L1_solids",
+      "bounds_source_m": {"min": [5.0, 3.0, 0.25], "max": [17.0, 14.0, 4.0]},
+      "source_reference_objects": ["Rhino_000_building_plan", "Rhino_002_garage_plan"],
+      "color_rgb": [0.72, 0.69, 0.62]
+    },
+    {
+      "name": "L1_west",
+      "group": "Massing_L1",
+      "role": "building_mass",
+      "upstream_layer": "massing_v3::L1_solids",
+      "bounds_source_m": {"min": [5.0, -15.0, 0.3], "max": [13.5, 3.0, 4.0]},
+      "source_reference_objects": ["Rhino_000_building_plan"],
+      "color_rgb": [0.72, 0.69, 0.62]
+    },
+    {
+      "name": "L2_east",
+      "group": "Massing_L2",
+      "role": "building_mass",
+      "upstream_layer": "massing_v3::L2_solids",
+      "bounds_source_m": {"min": [5.0, 3.0, 4.25], "max": [17.0, 14.0, 7.75]},
+      "source_reference_objects": ["Rhino_000_building_plan", "Rhino_002_garage_plan"],
+      "color_rgb": [0.82, 0.80, 0.74]
+    },
+    {
+      "name": "L2_west",
+      "group": "Massing_L2",
+      "role": "building_mass",
+      "upstream_layer": "massing_v3::L2_solids",
+      "bounds_source_m": {"min": [3.5, -15.0, 4.25], "max": [13.5, 3.0, 7.75]},
+      "source_reference_objects": ["Rhino_000_building_plan"],
+      "color_rgb": [0.82, 0.80, 0.74]
+    },
+    {
+      "name": "L2_balcony_south",
+      "group": "Massing_L2_Balconies",
+      "role": "balcony_slab",
+      "upstream_layer": "massing_v3::L2_balcony_solids",
+      "bounds_source_m": {"min": [1.5, -17.05, 4.0], "max": [13.5, 3.0, 5.25]},
+      "source_reference_objects": ["Rhino_000_building_plan"],
+      "color_rgb": [0.56, 0.54, 0.50]
+    },
+    {
+      "name": "L2_balcony_north",
+      "group": "Massing_L2_Balconies",
+      "role": "balcony_slab",
+      "upstream_layer": "massing_v3::L2_balcony_solids",
+      "bounds_source_m": {"min": [5.0, 14.0, 4.0], "max": [17.0, 16.25, 5.15]},
+      "source_reference_objects": ["Rhino_002_garage_plan"],
+      "color_rgb": [0.56, 0.54, 0.50]
+    },
+    {
+      "name": "L2_balcony_step",
+      "group": "Massing_L2_Balconies",
+      "role": "balcony_slab",
+      "upstream_layer": "massing_v3::L2_balcony_solids",
+      "bounds_source_m": {"min": [1.5, 3.0, 4.0], "max": [5.0, 14.0, 5.25]},
+      "source_reference_objects": ["Rhino_000_building_plan", "Rhino_002_garage_plan"],
+      "color_rgb": [0.56, 0.54, 0.50]
+    },
+    {
+      "name": "L2_roof_garage",
+      "group": "Massing_L2_Roofs",
+      "role": "roof_slab",
+      "upstream_layer": "massing_v3::L2_roof_solids",
+      "bounds_source_m": {"min": [2.5, 1.16, 7.75], "max": [18.97, 16.55, 8.35]},
+      "source_reference_objects": ["Rhino_002_garage_plan"],
+      "color_rgb": [0.24, 0.25, 0.27]
+    },
+    {
+      "name": "L3_main",
+      "group": "Massing_L3",
+      "role": "building_mass",
+      "upstream_layer": "massing_v3::L3_solids",
+      "bounds_source_m": {"min": [1.5, -10.0, 7.75], "max": [13.5, 3.0, 11.5]},
+      "source_reference_objects": ["Rhino_000_building_plan"],
+      "color_rgb": [0.90, 0.88, 0.82]
+    },
+    {
+      "name": "L3_balcony_south",
+      "group": "Massing_L3_Balconies",
+      "role": "balcony_slab",
+      "upstream_layer": "massing_v3::L3_balcony_solids",
+      "bounds_source_m": {"min": [1.5, -17.0, 7.75], "max": [13.5, -10.0, 8.9]},
+      "source_reference_objects": ["Rhino_000_building_plan"],
+      "color_rgb": [0.56, 0.54, 0.50]
+    },
+    {
+      "name": "L3_roof_slab",
+      "group": "Massing_L3_Roofs",
+      "role": "roof_slab",
+      "upstream_layer": "massing_v3::L3_roof_slab",
+      "bounds_source_m": {"min": [-1.0, -13.5, 11.5], "max": [15.0, 4.5, 12.3]},
+      "source_reference_objects": ["Rhino_000_building_plan"],
+      "color_rgb": [0.24, 0.25, 0.27]
+    }
+  ]
+}

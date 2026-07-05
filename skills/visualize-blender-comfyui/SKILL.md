@@ -9,7 +9,7 @@ Use Blender for deterministic geometry, camera, lighting, materials, beauty, and
 
 ## Prerequisites
 
-- Require an approved FreeCAD-to-Blender handoff or the complete checked cliff-house runner.
+- Require written approval of the FreeCAD site and 11-object house-massing review gates.
 - Require healthy Blender MCP and ComfyUI at `http://127.0.0.1:8188`.
 - Distinguish Blender's two source images from ComfyUI's one generated result.
 
@@ -24,6 +24,7 @@ Use Blender for deterministic geometry, camera, lighting, materials, beauty, and
 2. Require these markers in order:
 
    ```text
+   MASSING_PREFLIGHT_OK
    TERRAIN_BUILD_OK
    FREECAD_EXPORT_OK
    BLENDER_IMPORT_OK
@@ -34,10 +35,11 @@ Use Blender for deterministic geometry, camera, lighting, materials, beauty, and
    CLIFF_HOUSE_VISUALIZATION_OK
    ```
 
-3. Verify that the beauty, 16-bit depth, and ComfyUI output files exist and are non-empty.
-4. Treat `COMFY_IMAGE_OK` as the content-integrity gate. It must report valid dimensions and non-trivial tonal variation; a successful HTTP request alone is insufficient.
-5. If the generated file passes but the popup is blank, classify it as a presentation failure. Open the exact validated output with `eog --new-instance`; fall back to `xdg-open`. Do not rerun diffusion unless the image itself fails validation.
-6. Present the Blender beauty and depth paths plus the single ComfyUI result path. Describe the last image as a depth-constrained concept visualization, not CAD geometry.
+3. Require `MASSING_PREFLIGHT_OK` with eleven objects before terrain or export.
+4. Verify that the beauty, 16-bit depth, and ComfyUI output files exist and are non-empty.
+5. Treat `COMFY_IMAGE_OK` as the content-integrity gate. It must report valid dimensions and non-trivial tonal variation; a successful HTTP request alone is insufficient.
+6. If the generated file passes but the popup is blank, classify it as a presentation failure. Open the exact validated output with `eog --new-instance`; fall back to `xdg-open`. Do not rerun diffusion unless the image itself fails validation.
+7. Present the Blender beauty and depth paths plus the single ComfyUI result path. Describe the last image as a depth-constrained concept visualization, not CAD geometry.
 
 ## Prompt discipline
 

@@ -6,6 +6,7 @@ The repository's native Hermes skills live under `/home/nvidia/aes-demo/skills` 
 
 - `ingest-rhino-reference` for immutable .3dm intake and audit
 - `rebuild-freecad-reference` for source-derived editable FreeCAD geometry
+- `build-freecad-massing` for the checked 11-solid house massing and review gate
 - `handoff-freecad-blender` for the checked mesh/metadata bridge
 - `visualize-blender-comfyui` for rendering, image validation, and presentation
 
@@ -20,6 +21,8 @@ The only supported Hermes import entrypoint is `/home/nvidia/aes-demo/scripts/im
 Audit imported Rhino references only by executing `/home/nvidia/aes-demo/scripts/audit-rhino-reference-freecad.py` through the FreeCAD MCP `execute_code` tool. Do not recreate its logic. Require `REFERENCE_AUDIT_OK` before requesting views or continuing.
 
 For the editable site slabs, execute `/home/nvidia/aes-demo/scripts/build-cliff-house-site-slabs.py` through the FreeCAD MCP `execute_code` tool exactly as documented in `REFERENCE_MODEL_WORKFLOW.md`. Do not recreate its logic and never import `freeocc`; FreeCAD provides OpenCASCADE through its built-in `Part` module. Require `SITE_SLABS_BUILD_OK`.
+
+For the checked house massing, load `build-freecad-massing` only after the site-plan review gate. Execute its bundled builder and spec exactly as documented in `REFERENCE_MODEL_WORKFLOW.md`; require `FREECAD_MASSING_BUILD_OK` with 11 objects and stop for Front, Right, and Isometric human review before any Blender handoff. The massing transcribes the public upstream `massing_v3` coordinate record; it is not inferred from the committed curve-only `.3dm`.
 
 Blender is the rendering/visualization copy. Use its typed scene/object/screenshot tools for inspection and `execute_blender_code` for controlled edits. Code executes inside the live desktop Blender process, so save work before exploratory operations. Do not enable third-party asset services unless the user asks.
 

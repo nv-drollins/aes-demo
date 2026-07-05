@@ -20,9 +20,24 @@ FREECAD_URL = "http://127.0.0.1:9875"
 BLENDER_ADDRESS = ("127.0.0.1", 9876)
 BUNDLE_DIR = Path("/tmp/aes-demo-cliff-house-export")
 RENDER_DIR = Path("/tmp/aes-demo-render")
+MASSING_SPEC_ID = "cliff-house-upstream-massing-v1"
+MASSING_NAMES = (
+    "L1_east",
+    "L1_west",
+    "L2_east",
+    "L2_west",
+    "L2_balcony_south",
+    "L2_balcony_north",
+    "L2_balcony_step",
+    "L2_roof_garage",
+    "L3_main",
+    "L3_balcony_south",
+    "L3_roof_slab",
+)
 DEFAULT_PROMPT = (
-    "architectural site concept visualization, modernist cliff house "
-    "planning study on a steep coastal hillside, preserve every site footprint, dark concrete building "
+    "architectural site concept visualization, three-level modernist cliff house "
+    "with strong cantilevers and broad balcony slabs on a steep coastal hillside, "
+    "preserve every site footprint, dark concrete building "
     "pad, garage and driveway, broad patio terrace, ocean-facing landscape, "
     "realistic green terrain, soft clear daylight, aerial oblique view, "
     "preserve the site layout and topography, professional competition rendering"
@@ -177,6 +192,27 @@ def main() -> None:
     )
     freecad_code = (
         "import os\n"
+        "import FreeCAD as App\n"
+        "if 'CliffHouseRebuild' not in App.listDocuments():\n"
+        "    raise RuntimeError('CliffHouseRebuild is not open')\n"
+        "massing_document = App.getDocument('CliffHouseRebuild')\n"
+        f"required_massing = {MASSING_NAMES!r}\n"
+        "missing_massing = [name for name in required_massing "
+        "if massing_document.getObject(name) is None]\n"
+        "if missing_massing:\n"
+        "    raise RuntimeError(f'Missing approved massing: {missing_massing}')\n"
+        f"expected_spec_id = {MASSING_SPEC_ID!r}\n"
+        "invalid_massing = []\n"
+        "for name in required_massing:\n"
+        "    obj = massing_document.getObject(name)\n"
+        "    shape = getattr(obj, 'Shape', None)\n"
+        "    if (getattr(obj, 'MassingSpecId', '') != expected_spec_id "
+        "or shape is None or shape.isNull() or shape.Volume <= 0):\n"
+        "        invalid_massing.append(name)\n"
+        "if invalid_massing:\n"
+        "    raise RuntimeError(f'Invalid approved massing: {invalid_massing}')\n"
+        "print(f'MASSING_PREFLIGHT_OK objects={len(required_massing)} "
+        "spec={expected_spec_id}')\n"
         f"exec(compile(open({str(terrain_script)!r}, encoding='utf-8').read(), "
         f"{str(terrain_script)!r}, 'exec'))\n"
         "os.environ['AES_FREECAD_DOCUMENT'] = 'CliffHouseRebuild'\n"
@@ -188,6 +224,7 @@ def main() -> None:
         freecad_code
     )
     for marker in (
+        "MASSING_PREFLIGHT_OK",
         "TERRAIN_BUILD_OK=",
         "FREECAD_EXPORT_OK=",
     ):
