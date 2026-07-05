@@ -21,14 +21,15 @@ BUNDLE_DIR = Path("/tmp/aes-demo-cliff-house-export")
 RENDER_DIR = Path("/tmp/aes-demo-render")
 DEFAULT_PROMPT = (
     "architectural site concept visualization, modernist cliff house "
-    "planning study on a steep coastal hillside, dark concrete building "
+    "planning study on a steep coastal hillside, preserve every site footprint, dark concrete building "
     "pad, garage and driveway, broad patio terrace, ocean-facing landscape, "
     "realistic green terrain, soft clear daylight, aerial oblique view, "
     "preserve the site layout and topography, professional competition rendering"
 )
 DEFAULT_NEGATIVE = (
-    "flat grey square, blank image, distorted terrain, warped site plan, "
-    "floating geometry, extra roads, text, labels, watermark, people, "
+    "dollhouse, cutaway interior, floating platform, flat grey square, blank image, "
+    "distorted terrain, warped site plan, floating geometry, extra roads, "
+    "text, labels, watermark, people, "
     "low resolution, blurry, oversaturated"
 )
 

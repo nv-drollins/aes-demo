@@ -44,9 +44,13 @@ This absolute wrapper path is the only import command. Do not run `import-rhino-
 
 Require RHINO_REFERENCE_EXTRACT_OK and FREECAD_REFERENCE_IMPORT_OK. If either marker is missing, stop and report the real error.
 
-After the import, use FreeCAD MCP list_documents, get_object, get_objects, and get_view to inspect CliffHouseReference. Treat that document as immutable. Verify the source units, converted millimetre bounds, 10 curves, 6 labels, 11 Rhino layers, five closed planning polylines, and five terrain-construction NURBS curves. Show Isometric and Top views.
+After the import, use the FreeCAD MCP execute_code tool to execute exactly:
 
-Report the verified results and stop. Do not create CliffHouseRebuild, export to Blender, or run ComfyUI yet.
+exec(compile(open('/home/nvidia/aes-demo/scripts/audit-rhino-reference-freecad.py', encoding='utf-8').read(), '/home/nvidia/aes-demo/scripts/audit-rhino-reference-freecad.py', 'exec'))
+
+Do not rewrite the audit, do not inspect FreeCAD with improvised Python, and do not import any third-party CAD module. Require REFERENCE_AUDIT_OK with 16 objects, 10 curves, 6 labels, and 11 layers.
+
+Then use FreeCAD MCP get_view for Isometric and Top views of CliffHouseReference. Treat the document as immutable. Summarize the checked audit output and what is visible in those two views, then stop. Do not create CliffHouseRebuild, export to Blender, or run ComfyUI yet.
 ```
 
 Let Hermes finish. Prompt 1 is successful when it reports both import markers and confirms that `CliffHouseReference` contains the Rhino source curves.
@@ -58,18 +62,22 @@ Paste this into the same Hermes session:
 ```text
 Continue with the editable site-plan rebuild. Never modify CliffHouseReference.
 
-Use FreeCAD MCP tools to inspect the five closed PolylineCurve reference objects in CliffHouseReference. Identify the building, garage, driveway, patio stairs, and patio footprints from their RhinoObjectName and RhinoLayerPath metadata. Read their exact vertices and source elevations; if the typed inspection tools do not expose vertex coordinates, use read-only execute_code to extract them from each source Shape. Do not use dimensions or coordinates supplied by me.
+Use FreeCAD MCP tools to inspect the five closed PolylineCurve reference objects in CliffHouseReference. Identify the building, garage, driveway, patio stairs, and patio footprints from their RhinoObjectName and RhinoLayerPath metadata. Report their source objects, bounding boxes, and base elevations. Do not modify CliffHouseReference.
 
-Create a new document named CliffHouseRebuild. For each source footprint, reproduce its exact closed wire as a Part::Feature and extrude it 50 mm upward as a thin visualization slab. The 50 mm thickness is the only demo convention; every X, Y, and base-Z value must be derived from the imported source curve.
+Then use the FreeCAD MCP execute_code tool to execute exactly:
 
-Use these output names because the checked visualization pipeline consumes them:
+exec(compile(open('/home/nvidia/aes-demo/scripts/build-cliff-house-site-slabs.py', encoding='utf-8').read(), '/home/nvidia/aes-demo/scripts/build-cliff-house-site-slabs.py', 'exec'))
+
+Do not rewrite that script, do not use the terminal tool, and do not import any third-party CAD module. The checked script uses FreeCAD's built-in Part module and derives every footprint coordinate and elevation from the imported source Shapes.
+
+Require SITE_SLABS_BUILD_OK. After it succeeds, call get_objects on CliffHouseRebuild and verify these five output names:
 - building_plan_Shell
 - garage_plan_Shell
 - driveway_plan_Shell
 - patio_stairs_plan_Shell
 - patio_plan_Shell
 
-After creating them, call get_objects and verify all five names. Read back and report each slab's derived source object, base elevation, footprint dimensions, and bounding box. Show an Isometric fitted view of CliffHouseRebuild and stop. Do not create terrain manually and do not add walls, roofs, or other architecture.
+Report each slab's source object, derived base elevation, dimensions, and bounding box from the tool results. Show an Isometric fitted view of CliffHouseRebuild and stop. Do not create terrain manually and do not add walls, roofs, or other architecture.
 ```
 
 Keep FreeCAD visible while Hermes works. Prompt 2 is successful when the five planning slabs are visible in `CliffHouseRebuild`.
@@ -112,6 +120,6 @@ After Prompt 3 finishes:
 1. Switch to Blender and show the imported site, terrain, camera, materials, and lighting.
 2. Show the Blender beauty render at `/tmp/aes-demo-render/freecad-beauty.png`.
 3. Show the Blender depth render at `/tmp/aes-demo-render/freecad-depth.png`.
-4. Show the ComfyUI image that opened automatically.
+4. Show the single ComfyUI image that opened automatically. Blender creates two source images (beauty and depth); ComfyUI combines them into one final concept PNG.
 
 The Blender scene and renders represent the FreeCAD geometry. The ComfyUI image is an AI concept visualization constrained by Blender's depth render.

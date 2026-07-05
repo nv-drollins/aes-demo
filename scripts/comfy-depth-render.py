@@ -29,6 +29,9 @@ def main():
     parser.add_argument("--prompt", default="professional architectural visualization, contemporary small pavilion, realistic concrete and timber materials, landscaped site, soft daylight, physically based rendering, highly detailed")
     parser.add_argument("--negative", default="distorted architecture, warped walls, extra buildings, text, watermark, people, low resolution, blurry, oversaturated")
     parser.add_argument("--seed", type=int, default=20260702)
+    parser.add_argument("--control-strength", type=float, default=1.0)
+    parser.add_argument("--control-end", type=float, default=1.0)
+    parser.add_argument("--denoise", type=float, default=0.55)
     parser.add_argument("--output-dir", type=Path, default=ROOT / "outputs" / "comfyui")
     args = parser.parse_args()
     graph = json.loads((ROOT / "workflows" / "freecad-depth-api.json").read_text())
@@ -37,6 +40,9 @@ def main():
     graph["2"]["inputs"]["text"] = args.prompt
     graph["3"]["inputs"]["text"] = args.negative
     graph["11"]["inputs"]["seed"] = args.seed
+    graph["10"]["inputs"]["strength"] = args.control_strength
+    graph["10"]["inputs"]["end_percent"] = args.control_end
+    graph["11"]["inputs"]["denoise"] = args.denoise
     response = requests.post(f"{BASE_URL}/prompt", json={"prompt": graph, "client_id": str(uuid.uuid4())}, timeout=30)
     response.raise_for_status()
     queued = response.json()
