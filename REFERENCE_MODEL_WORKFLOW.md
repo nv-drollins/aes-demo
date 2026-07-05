@@ -96,19 +96,15 @@ Report each object's group, role, source references, and bounds. Explain the ups
 
 Prompt 3 succeeds when the three-level cantilevered house is visible and you approve its proportions.
 
-Review the Front, Right, and Isometric views. If the massing looks correct, type this into the same Hermes session:
-
-```text
-Approved.
-```
-
-Wait for Hermes to acknowledge the approval, then continue to Step 6. If the massing does not look correct, describe the problem instead of approving it.
+Review the Front, Right, and Isometric views. If the massing does not look correct, describe the problem and remain in Step 5. If it looks correct, do **not** send `Approved` as a separate message. Continue directly to Step 6 and paste its entire prompt; the first line records approval while constraining the next action.
 
 ## Step 6 — Prompt 4: run Blender and ComfyUI
 
 Paste this into the same Hermes session:
 
 ```text
+Approved. Proceed with Step 6 using only the exact checked instructions below. Do not infer, substitute, or begin a different handoff workflow.
+
 Use the `handoff-freecad-blender` and `visualize-blender-comfyui` skills for this phase. Run the checked visualization pipeline for the approved CliffHouseRebuild.
 
 Use FreeCAD MCP get_objects first. Verify the five site-plan objects and all eleven massing objects from the previous phase. If any are missing, stop and report them.
