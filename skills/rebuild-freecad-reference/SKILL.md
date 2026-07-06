@@ -21,7 +21,7 @@ Create editable geometry in a separate FreeCAD document. Derive every coordinate
 4. For the current cliff-house site plan, execute this exact code with FreeCAD MCP `execute_code`:
 
    ```python
-   exec(compile(open('/home/nvidia/aes-demo/scripts/build-cliff-house-site-slabs.py', encoding='utf-8').read(), '/home/nvidia/aes-demo/scripts/build-cliff-house-site-slabs.py', 'exec'))
+   exec(compile(open('/home/nvidia/aec-demo/scripts/build-cliff-house-site-slabs.py', encoding='utf-8').read(), '/home/nvidia/aec-demo/scripts/build-cliff-house-site-slabs.py', 'exec'))
    ```
 
 5. Require `SITE_SLABS_BUILD_OK`. Verify the five outputs and their `SourceReferenceObject`, `SourceRhinoName`, `SourceRhinoLayer`, `MaterialRole`, dimensions, and bounds.

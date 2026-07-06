@@ -18,8 +18,8 @@ import xmlrpc.client
 ROOT = Path(__file__).resolve().parent.parent
 FREECAD_URL = "http://127.0.0.1:9875"
 BLENDER_ADDRESS = ("127.0.0.1", 9876)
-BUNDLE_DIR = Path("/tmp/aes-demo-cliff-house-export")
-RENDER_DIR = Path("/tmp/aes-demo-render")
+BUNDLE_DIR = Path("/tmp/aec-demo-cliff-house-export")
+RENDER_DIR = Path("/tmp/aec-demo-render")
 MASSING_SPEC_ID = "cliff-house-upstream-massing-v1"
 MASSING_NAMES = (
     "L1_east",
@@ -215,8 +215,8 @@ def main() -> None:
         "spec={expected_spec_id}')\n"
         f"exec(compile(open({str(terrain_script)!r}, encoding='utf-8').read(), "
         f"{str(terrain_script)!r}, 'exec'))\n"
-        "os.environ['AES_FREECAD_DOCUMENT'] = 'CliffHouseRebuild'\n"
-        f"os.environ['AES_FREECAD_EXPORT_DIR'] = {str(BUNDLE_DIR)!r}\n"
+        "os.environ['AEC_FREECAD_DOCUMENT'] = 'CliffHouseRebuild'\n"
+        f"os.environ['AEC_FREECAD_EXPORT_DIR'] = {str(BUNDLE_DIR)!r}\n"
         f"exec(compile(open({str(export_script)!r}, encoding='utf-8').read(), "
         f"{str(export_script)!r}, 'exec'))"
     )
@@ -236,8 +236,8 @@ def main() -> None:
     import_output = checked_blender_script(
         ROOT / "scripts" / "import-freecad-bundle.py",
         {
-            "AES_FREECAD_EXPORT_DIR": str(BUNDLE_DIR),
-            "AES_BLENDER_CLEAR_SCENE": (
+            "AEC_FREECAD_EXPORT_DIR": str(BUNDLE_DIR),
+            "AEC_BLENDER_CLEAR_SCENE": (
                 "0"
                 if args.preserve_blender_scene
                 else "1"

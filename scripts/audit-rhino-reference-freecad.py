@@ -10,10 +10,10 @@ import FreeCAD as App
 
 
 DOCUMENT_NAME = os.environ.get(
-    "AES_RHINO_REFERENCE_DOCUMENT",
+    "AEC_RHINO_REFERENCE_DOCUMENT",
     "CliffHouseReference",
 )
-FORMAT = "aes-demo-rhino-reference-v1"
+FORMAT = "aec-demo-rhino-reference-v1"
 
 if DOCUMENT_NAME not in App.listDocuments():
     raise RuntimeError(

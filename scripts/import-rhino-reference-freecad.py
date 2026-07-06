@@ -13,21 +13,21 @@ import Part
 
 MANIFEST_PATH = Path(
     os.environ.get(
-        "AES_RHINO_REFERENCE_JSON",
-        "/tmp/aes-demo-rhino-reference.json",
+        "AEC_RHINO_REFERENCE_JSON",
+        "/tmp/aec-demo-rhino-reference.json",
     )
 )
 OUTPUT_PATH = Path(
     os.environ.get(
-        "AES_RHINO_REFERENCE_FCSTD",
-        "/home/nvidia/aes-demo/source_models/cliff_house/cliff_house_reference.FCStd",
+        "AEC_RHINO_REFERENCE_FCSTD",
+        "/home/nvidia/aec-demo/source_models/cliff_house/cliff_house_reference.FCStd",
     )
 )
 DOCUMENT_NAME = os.environ.get(
-    "AES_RHINO_REFERENCE_DOCUMENT",
+    "AEC_RHINO_REFERENCE_DOCUMENT",
     "CliffHouseReference",
 )
-FORMAT = "aes-demo-rhino-reference-v1"
+FORMAT = "aec-demo-rhino-reference-v1"
 
 
 def safe_name(value):

@@ -17,13 +17,13 @@ Keep FreeCAD authoritative and Blender disposable. Export a checked mesh bundle 
 ## Procedure
 
 1. Inspect the FreeCAD document and reject an empty export set, null Shapes, zero-facet Meshes, or zero-size bounds.
-2. Through FreeCAD MCP `execute_code`, set `AES_FREECAD_DOCUMENT` and `AES_FREECAD_EXPORT_DIR`, then execute `ROOT/scripts/export-freecad-for-blender.py` with `compile(open(...).read(), ...)`.
+2. Through FreeCAD MCP `execute_code`, set `AEC_FREECAD_DOCUMENT` and `AEC_FREECAD_EXPORT_DIR`, then execute `ROOT/scripts/export-freecad-for-blender.py` with `compile(open(...).read(), ...)`.
 3. Require `FREECAD_EXPORT_OK`. Read `manifest.json` and verify:
-   - format is `aes-demo-freecad-bundle-v1`;
+   - format is `aec-demo-freecad-bundle-v1`;
    - source units are millimetres and Blender scale is `0.001`;
    - every object has a unique FreeCAD identity, mesh file, bounds, geometry kind, and material role.
-4. Through Blender MCP `execute_blender_code`, set the same `AES_FREECAD_EXPORT_DIR` and execute `ROOT/scripts/import-freecad-bundle.py`.
-5. Set `AES_BLENDER_CLEAR_SCENE=1` for a recorded clean demo. Preserve unrelated scene objects only when the user explicitly requests it.
+4. Through Blender MCP `execute_blender_code`, set the same `AEC_FREECAD_EXPORT_DIR` and execute `ROOT/scripts/import-freecad-bundle.py`.
+5. Set `AEC_BLENDER_CLEAR_SCENE=1` for a recorded clean demo. Preserve unrelated scene objects only when the user explicitly requests it.
 6. Require `BLENDER_IMPORT_OK`. Use typed Blender inspection to compare imported object count, names, roles, and bounds with the manifest.
 7. Save the Blender checkpoint and stop at the handoff review gate. Do not run ComfyUI unless requested.
 

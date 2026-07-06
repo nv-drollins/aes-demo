@@ -1,0 +1,1608 @@
+[
+  {
+    "index": 120,
+    "text": "L1 INTERIOR\n153 m\u00b2 / 1650 sf",
+    "layer": "House_01::H01::labels",
+    "point": [
+      9.25,
+      -207.0,
+      -100.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 121,
+    "text": "VERANDA\n70 m\u00b2 / 753 sf",
+    "layer": "House_01::H01::labels",
+    "point": [
+      3.25,
+      -207.0,
+      -100.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 125,
+    "text": "H01 \u2014 LEVEL 1 (GROUND)",
+    "layer": "House_01::H01::labels",
+    "point": [
+      7.5,
+      -194.0,
+      -100.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 127,
+    "text": "L2 INTERIOR\n228 m\u00b2 / 2454 sf",
+    "layer": "House_01::H01::labels",
+    "point": [
+      67.5,
+      -207.0,
+      -100.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 130,
+    "text": "H01 \u2014 LEVEL 2",
+    "layer": "House_01::H01::labels",
+    "point": [
+      67.5,
+      -194.0,
+      -100.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 133,
+    "text": "L3 INTERIOR\n156 m\u00b2 / 1679 sf",
+    "layer": "House_01::H01::labels",
+    "point": [
+      127.5,
+      -203.5,
+      -100.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 134,
+    "text": "S BALCONY\n84 m\u00b2 / 904 sf",
+    "layer": "House_01::H01::labels",
+    "point": [
+      127.5,
+      -213.5,
+      -100.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 139,
+    "text": "H01 \u2014 LEVEL 3 (TOP)",
+    "layer": "House_01::H01::labels",
+    "point": [
+      127.5,
+      -194.0,
+      -100.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 141,
+    "text": "GARAGE L1\n132 m\u00b2 / 1421 sf",
+    "layer": "House_01::H01::labels",
+    "point": [
+      191.0,
+      -191.5,
+      -100.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 144,
+    "text": "H01 \u2014 GARAGE L1",
+    "layer": "House_01::H01::labels",
+    "point": [
+      191.0,
+      -184.0,
+      -100.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 146,
+    "text": "GUEST L2\n132 m\u00b2 / 1421 sf",
+    "layer": "House_01::H01::labels",
+    "point": [
+      251.0,
+      -191.5,
+      -100.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 149,
+    "text": "H01 \u2014 GUEST SUITE L2",
+    "layer": "House_01::H01::labels",
+    "point": [
+      251.0,
+      -184.0,
+      -100.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 154,
+    "text": "L1 INTERIOR\n126 m\u00b2 / 1352 sf",
+    "layer": "H2_labels::labels",
+    "point": [
+      9.25,
+      -285.25,
+      -100.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 155,
+    "text": "W VERANDA\n70 m\u00b2",
+    "layer": "H2_labels::labels",
+    "point": [
+      3.25,
+      -287.0,
+      -100.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 156,
+    "text": "S VERANDA\n30 m\u00b2",
+    "layer": "H2_labels::labels",
+    "point": [
+      9.25,
+      -295.25,
+      -100.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 162,
+    "text": "H02 \u2014 LEVEL 1 (GROUND)",
+    "layer": "H2_labels::labels",
+    "point": [
+      7.5,
+      -274.0,
+      -100.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 167,
+    "text": "L2 INTERIOR\n126 m\u00b2 / 1352 sf",
+    "layer": "H2_labels::labels",
+    "point": [
+      74.25,
+      -285.0,
+      -100.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 168,
+    "text": "W BALC STRIP\n96 m\u00b2",
+    "layer": "H2_labels::labels",
+    "point": [
+      68.25,
+      -280.0,
+      -100.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 169,
+    "text": "S BALCONY\n30 m\u00b2",
+    "layer": "H2_labels::labels",
+    "point": [
+      74.25,
+      -295.25,
+      -100.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 175,
+    "text": "H02 \u2014 LEVEL 2",
+    "layer": "H2_labels::labels",
+    "point": [
+      72.5,
+      -274.0,
+      -100.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 178,
+    "text": "L3 INTERIOR\n156 m\u00b2 / 1679 sf",
+    "layer": "H2_labels::labels",
+    "point": [
+      137.5,
+      -283.5,
+      -100.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 179,
+    "text": "S BALCONY\n84 m\u00b2 / 904 sf",
+    "layer": "H2_labels::labels",
+    "point": [
+      137.5,
+      -293.5,
+      -100.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 184,
+    "text": "H02 \u2014 LEVEL 3 (TOP)",
+    "layer": "H2_labels::labels",
+    "point": [
+      137.5,
+      -274.0,
+      -100.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 186,
+    "text": "GARAGE L1\n132 m\u00b2 / 1421 sf",
+    "layer": "H2_labels::labels",
+    "point": [
+      206.0,
+      -271.5,
+      -100.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 189,
+    "text": "H02 \u2014 GARAGE L1",
+    "layer": "H2_labels::labels",
+    "point": [
+      206.0,
+      -264.0,
+      -100.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 192,
+    "text": "GUEST L2\n132 m\u00b2 / 1421 sf",
+    "layer": "H2_labels::labels",
+    "point": [
+      271.0,
+      -271.5,
+      -100.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 193,
+    "text": "N BALCONY\n27 m\u00b2",
+    "layer": "H2_labels::labels",
+    "point": [
+      271.0,
+      -264.9,
+      -100.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 197,
+    "text": "H02 \u2014 GUEST SUITE L2",
+    "layer": "H2_labels::labels",
+    "point": [
+      271.0,
+      -262.0,
+      -100.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 212,
+    "text": "OFFICE 1  ~34 m2",
+    "layer": "H2_plans::L3::labels",
+    "point": [
+      4.0,
+      -4.5,
+      8.05
+    ],
+    "visible": true
+  },
+  {
+    "index": 213,
+    "text": "OFFICE 2  ~34 m2",
+    "layer": "H2_plans::L3::labels",
+    "point": [
+      10.5,
+      -4.5,
+      8.05
+    ],
+    "visible": true
+  },
+  {
+    "index": 214,
+    "text": "MAKER / PROJECT\n~84 m2",
+    "layer": "H2_plans::L3::labels",
+    "point": [
+      7.25,
+      -8.0,
+      8.05
+    ],
+    "visible": true
+  },
+  {
+    "index": 215,
+    "text": "WC\n6 m2",
+    "layer": "H2_plans::L3::labels",
+    "point": [
+      12.25,
+      -0.5,
+      8.05
+    ],
+    "visible": true
+  },
+  {
+    "index": 216,
+    "text": "S BALCONY  84 m2",
+    "layer": "H2_plans::L3::outdoor",
+    "point": [
+      7.25,
+      -14.0,
+      8.05
+    ],
+    "visible": true
+  },
+  {
+    "index": 217,
+    "text": "HOUSE 02  |  LEVEL 3 - THIRD FLOOR  |  PROPOSED LAYOUT",
+    "layer": "H2_plans::L3::labels",
+    "point": [
+      7.25,
+      4.5,
+      8.05
+    ],
+    "visible": true
+  },
+  {
+    "index": 235,
+    "text": "MASTER BED\n49 m2",
+    "layer": "H2_plans::L2::labels",
+    "point": [
+      6.75,
+      -11.25,
+      4.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 236,
+    "text": "W BALCONY\n55 m2",
+    "layer": "H2_plans::L2::outdoor",
+    "point": [
+      2.5,
+      -4.0,
+      4.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 237,
+    "text": "S BALCONY  20 m2",
+    "layer": "H2_plans::L2::outdoor",
+    "point": [
+      9.25,
+      -16.5,
+      4.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 247,
+    "text": "MASTER BATH\n10.5 m2",
+    "layer": "H2_plans::L2::labels",
+    "point": [
+      11.75,
+      -14.0,
+      4.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 248,
+    "text": "BED 2  24 m2",
+    "layer": "H2_plans::L2::labels",
+    "point": [
+      6.75,
+      1.625,
+      4.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 249,
+    "text": "BED 3  24 m2",
+    "layer": "H2_plans::L2::labels",
+    "point": [
+      6.75,
+      -1.625,
+      4.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 250,
+    "text": "LOUNGE  20 m2",
+    "layer": "H2_plans::L2::labels",
+    "point": [
+      6.75,
+      -6.0,
+      4.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 251,
+    "text": "STAIR LANDING",
+    "layer": "H2_plans::L2::stairs",
+    "point": [
+      11.75,
+      -6.0,
+      4.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 258,
+    "text": "SHARED BATH\n13 m2",
+    "layer": "H2_plans::L2::labels",
+    "point": [
+      13.0,
+      2.0,
+      4.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 259,
+    "text": "MASTER WIC\n10.5 m2",
+    "layer": "H2_plans::L2::labels",
+    "point": [
+      11.75,
+      -9.5,
+      4.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 308,
+    "text": "Foyer",
+    "layer": "House_02_finish::H2_Interiors::Floor_plans::L1_floorplan::floor_plan_L1_labels",
+    "point": [
+      11.5,
+      1.0,
+      0.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 309,
+    "text": "Stair / Lift",
+    "layer": "House_02_finish::H2_Interiors::Floor_plans::L1_floorplan::floor_plan_L1_labels",
+    "point": [
+      10.5,
+      -2.5,
+      0.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 310,
+    "text": "Kitchen",
+    "layer": "House_02_finish::H2_Interiors::Floor_plans::L1_floorplan::floor_plan_L1_labels",
+    "point": [
+      11.5,
+      -7.5,
+      0.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 311,
+    "text": "Scullery",
+    "layer": "House_02_finish::H2_Interiors::Floor_plans::L1_floorplan::floor_plan_L1_labels",
+    "point": [
+      11.5,
+      -12.5,
+      0.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 312,
+    "text": "Utility / Mech",
+    "layer": "House_02_finish::H2_Interiors::Floor_plans::L1_floorplan::floor_plan_L1_labels",
+    "point": [
+      11.5,
+      -15.5,
+      0.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 313,
+    "text": "West Terrace",
+    "layer": "House_02_finish::H2_Interiors::Floor_plans::L1_floorplan::floor_plan_L1_labels",
+    "point": [
+      -0.25,
+      -7.0,
+      0.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 314,
+    "text": "Bedroom 3",
+    "layer": "House_02_finish::H2_Interiors::Floor_plans::L2_floorplan::floor_plan_L2_labels",
+    "point": [
+      6.5,
+      -12.5,
+      4.25
+    ],
+    "visible": true
+  },
+  {
+    "index": 315,
+    "text": "West Balcony",
+    "layer": "House_02_finish::H2_Interiors::Floor_plans::L2_floorplan::floor_plan_L2_labels",
+    "point": [
+      2.5,
+      -6.0,
+      4.25
+    ],
+    "visible": true
+  },
+  {
+    "index": 316,
+    "text": "South Balcony",
+    "layer": "House_02_finish::H2_Interiors::Floor_plans::L2_floorplan::floor_plan_L2_labels",
+    "point": [
+      8.5,
+      -16.0,
+      4.25
+    ],
+    "visible": true
+  },
+  {
+    "index": 317,
+    "text": "North Balcony",
+    "layer": "House_02_finish::H2_Interiors::Floor_plans::L2_floorplan::floor_plan_L2_labels",
+    "point": [
+      8.5,
+      4.0,
+      4.25
+    ],
+    "visible": true
+  },
+  {
+    "index": 318,
+    "text": "Guest Bedroom 1",
+    "layer": "House_02_finish::H2_Interiors::Floor_plans::L2_floorplan::floor_plan_L2_labels",
+    "point": [
+      9.0,
+      11.0,
+      4.25
+    ],
+    "visible": true
+  },
+  {
+    "index": 319,
+    "text": "Guest Ensuite 1",
+    "layer": "House_02_finish::H2_Interiors::Floor_plans::L2_floorplan::floor_plan_L2_labels",
+    "point": [
+      15.0,
+      11.5,
+      4.25
+    ],
+    "visible": true
+  },
+  {
+    "index": 320,
+    "text": "Guest Lounge + Kitchen",
+    "layer": "House_02_finish::H2_Interiors::Floor_plans::L2_floorplan::floor_plan_L2_labels",
+    "point": [
+      9.0,
+      5.5,
+      4.25
+    ],
+    "visible": true
+  },
+  {
+    "index": 321,
+    "text": "Guest Bedroom 2",
+    "layer": "House_02_finish::H2_Interiors::Floor_plans::L2_floorplan::floor_plan_L2_labels",
+    "point": [
+      15.0,
+      6.0,
+      4.25
+    ],
+    "visible": true
+  },
+  {
+    "index": 322,
+    "text": "Lounge / Guest",
+    "layer": "House_02_finish::H2_Interiors::Floor_plans::L3_floorplan::floor_plan_L3_labels",
+    "point": [
+      5.5,
+      -7.0,
+      7.75
+    ],
+    "visible": true
+  },
+  {
+    "index": 323,
+    "text": "Storage",
+    "layer": "House_02_finish::H2_Interiors::Floor_plans::L3_floorplan::floor_plan_L3_labels",
+    "point": [
+      12.5,
+      1.5,
+      7.75
+    ],
+    "visible": true
+  },
+  {
+    "index": 324,
+    "text": "Upper Patio",
+    "layer": "House_02_finish::H2_Interiors::Floor_plans::L3_floorplan::floor_plan_L3_labels",
+    "point": [
+      7.5,
+      -12.0,
+      7.75
+    ],
+    "visible": true
+  },
+  {
+    "index": 325,
+    "text": "Powder Room",
+    "layer": "House_02_finish::H2_Interiors::Floor_plans::L1_floorplan::floor_plan_L1_labels",
+    "point": [
+      12.5,
+      -3.0545525358053935,
+      0.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 329,
+    "text": "Dining",
+    "layer": "House_02_finish::H2_Interiors::Floor_plans::L1_floorplan::floor_plan_L1_labels",
+    "point": [
+      5.5,
+      -11.0,
+      0.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 330,
+    "text": "Living Room",
+    "layer": "House_02_finish::H2_Interiors::Floor_plans::L1_floorplan::floor_plan_L1_labels",
+    "point": [
+      5.5,
+      -4.0,
+      2.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 331,
+    "text": "Study",
+    "layer": "House_02_finish::H2_Interiors::Floor_plans::L1_floorplan::floor_plan_L1_labels",
+    "point": [
+      5.5,
+      -15.0,
+      0.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 332,
+    "text": "Maker Space",
+    "layer": "House_02_finish::H2_Interiors::Floor_plans::L3_floorplan::floor_plan_L3_labels",
+    "point": [
+      5.225461398171403,
+      -0.5656011473408169,
+      7.75
+    ],
+    "visible": true
+  },
+  {
+    "index": 333,
+    "text": "Bathroom",
+    "layer": "House_02_finish::H2_Interiors::Floor_plans::L3_floorplan::floor_plan_L3_labels",
+    "point": [
+      11.5,
+      -2.303919760988309,
+      7.75
+    ],
+    "visible": true
+  },
+  {
+    "index": 334,
+    "text": "Stair / Lift",
+    "layer": "House_02_finish::H2_Interiors::Floor_plans::L3_floorplan::floor_plan_L3_labels",
+    "point": [
+      10.5,
+      0.6749719216665706,
+      7.75
+    ],
+    "visible": true
+  },
+  {
+    "index": 336,
+    "text": "Maker Space",
+    "layer": "House_02_finish::H2_Interiors::Floor_plans::L3_floorplan::floor_plan_L3_labels",
+    "point": [
+      5.5,
+      -0.5,
+      7.75
+    ],
+    "visible": true
+  },
+  {
+    "index": 338,
+    "text": "Lounge Guest",
+    "layer": "House_02_finish::H2_Interiors::Floor_plans::L3_floorplan::floor_plan_L3_labels",
+    "point": [
+      7.5,
+      -7.0,
+      7.75
+    ],
+    "visible": true
+  },
+  {
+    "index": 340,
+    "text": "Stair Lift L3",
+    "layer": "House_02_finish::H2_Interiors::Floor_plans::L3_floorplan::floor_plan_L3_labels",
+    "point": [
+      10.5,
+      1.0,
+      7.75
+    ],
+    "visible": true
+  },
+  {
+    "index": 342,
+    "text": "Storage",
+    "layer": "House_02_finish::H2_Interiors::Floor_plans::L3_floorplan::floor_plan_L3_labels",
+    "point": [
+      12.5,
+      1.0,
+      7.75
+    ],
+    "visible": true
+  },
+  {
+    "index": 344,
+    "text": "Bathroom L3",
+    "layer": "House_02_finish::H2_Interiors::Floor_plans::L3_floorplan::floor_plan_L3_labels",
+    "point": [
+      11.5,
+      -2.5,
+      7.75
+    ],
+    "visible": true
+  },
+  {
+    "index": 346,
+    "text": "Bedroom 2",
+    "layer": "House_02_finish::H2_Interiors::Floor_plans::L2_floorplan::floor_plan_L2_labels",
+    "point": [
+      6.5,
+      0.7651841618874053,
+      4.25
+    ],
+    "visible": true
+  },
+  {
+    "index": 349,
+    "text": "Lounge-Fitness",
+    "layer": "House_02_finish::H2_Interiors::Floor_plans::L2_floorplan::floor_plan_L2_labels",
+    "point": [
+      7.2668255087733415,
+      -5.8481978744501575,
+      4.25
+    ],
+    "visible": true
+  },
+  {
+    "index": 351,
+    "text": "Landing",
+    "layer": "House_02_finish::H2_Interiors::Floor_plans::L2_floorplan::floor_plan_L2_labels",
+    "point": [
+      12.094243682566082,
+      -3.298166347430082,
+      4.25
+    ],
+    "visible": true
+  },
+  {
+    "index": 352,
+    "text": "Bathroom",
+    "layer": "House_02_finish::H2_Interiors::Floor_plans::L2_floorplan::floor_plan_L2_labels",
+    "point": [
+      11.916986287437243,
+      1.2350260182464776,
+      4.25
+    ],
+    "visible": true
+  },
+  {
+    "index": 355,
+    "text": "Storage",
+    "layer": "House_02_finish::H2_Interiors::Floor_plans::L2_floorplan::floor_plan_L2_labels",
+    "point": [
+      6.849839221336106,
+      -8.927481227832903,
+      4.25
+    ],
+    "visible": true
+  },
+  {
+    "index": 357,
+    "text": "Multipurpose",
+    "layer": "House_02_finish::H2_Interiors::Floor_plans::L2_floorplan::floor_plan_L2_labels",
+    "point": [
+      12.687647245457537,
+      -8.9114432937007,
+      4.25
+    ],
+    "visible": true
+  },
+  {
+    "index": 545,
+    "text": "EXISTING GRADE",
+    "layer": "H2_labels::annotations::Labels",
+    "point": [
+      10.0,
+      -18.48913043478261,
+      -0.9
+    ],
+    "visible": true
+  },
+  {
+    "index": 546,
+    "text": "PATIO",
+    "layer": "H2_labels::annotations::Labels",
+    "point": [
+      -3.5,
+      -3.0,
+      -0.9
+    ],
+    "visible": true
+  },
+  {
+    "index": 547,
+    "text": "BUILDING PAD",
+    "layer": "H2_labels::annotations::Labels",
+    "point": [
+      3.0,
+      -7.5,
+      0.1
+    ],
+    "visible": true
+  },
+  {
+    "index": 548,
+    "text": "DRIVEWAY",
+    "layer": "H2_labels::annotations::Labels",
+    "point": [
+      18.0,
+      8.0,
+      0.1
+    ],
+    "visible": true
+  },
+  {
+    "index": 550,
+    "text": "PROPERTY BOUNDARY",
+    "layer": "H2_labels::annotations::Labels",
+    "point": [
+      9.0,
+      19.2,
+      0.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 552,
+    "text": "3m SETBACK (TYP.)",
+    "layer": "Site::Site_Analysis_Group::site_analysis_setbacks",
+    "point": [
+      23.0,
+      -20.0,
+      0.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 556,
+    "text": "N",
+    "layer": "Site::Site_Analysis_Group::site_analysis_north",
+    "point": [
+      -7.0,
+      13.0,
+      0.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 562,
+    "text": "A",
+    "layer": "Site::Site_Analysis_Group::site_analysis_sections",
+    "point": [
+      -12.5,
+      -4.0,
+      0.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 563,
+    "text": "A",
+    "layer": "Site::Site_Analysis_Group::site_analysis_sections",
+    "point": [
+      30.5,
+      -4.0,
+      0.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 564,
+    "text": "SECTION  A-A",
+    "layer": "Site::Site_Analysis_Group::site_analysis_sections",
+    "point": [
+      9.0,
+      -3.0,
+      0.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 570,
+    "text": "B",
+    "layer": "Site::Site_Analysis_Group::site_analysis_sections",
+    "point": [
+      6.0,
+      -24.5,
+      0.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 571,
+    "text": "B",
+    "layer": "Site::Site_Analysis_Group::site_analysis_sections",
+    "point": [
+      6.0,
+      20.5,
+      0.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 572,
+    "text": "SECTION  B-B",
+    "layer": "Site::Site_Analysis_Group::site_analysis_sections",
+    "point": [
+      7.0,
+      -2.0,
+      0.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 579,
+    "text": "0m",
+    "layer": "Site::Site_Analysis_Group::site_analysis_scalebar",
+    "point": [
+      -9.0,
+      -20.7,
+      0.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 580,
+    "text": "5m",
+    "layer": "Site::Site_Analysis_Group::site_analysis_scalebar",
+    "point": [
+      -4.0,
+      -20.7,
+      0.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 581,
+    "text": "10m",
+    "layer": "Site::Site_Analysis_Group::site_analysis_scalebar",
+    "point": [
+      1.0,
+      -20.7,
+      0.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 582,
+    "text": "15m",
+    "layer": "Site::Site_Analysis_Group::site_analysis_scalebar",
+    "point": [
+      6.0,
+      -20.7,
+      0.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 583,
+    "text": "20m",
+    "layer": "Site::Site_Analysis_Group::site_analysis_scalebar",
+    "point": [
+      11.0,
+      -20.7,
+      0.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 584,
+    "text": "SCALE 1:200",
+    "layer": "Site::Site_Analysis_Group::site_analysis_scalebar",
+    "point": [
+      1.0,
+      -21.3,
+      0.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 585,
+    "text": "FLOOR AREA SCHEDULE",
+    "layer": "Site::Site_Analysis_Group::site_analysis_areas",
+    "point": [
+      29.506133797813042,
+      10.0,
+      0.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 586,
+    "text": "\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500",
+    "layer": "Site::Site_Analysis_Group::site_analysis_areas",
+    "point": [
+      29.506133797813042,
+      9.3,
+      0.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 587,
+    "text": "L1  Main          240 m\u00b2",
+    "layer": "Site::Site_Analysis_Group::site_analysis_areas",
+    "point": [
+      29.506133797813042,
+      8.6,
+      0.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 588,
+    "text": "L2  Main          174 m\u00b2",
+    "layer": "Site::Site_Analysis_Group::site_analysis_areas",
+    "point": [
+      29.506133797813042,
+      7.9,
+      0.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 589,
+    "text": "L2  Guest Wing    132 m\u00b2",
+    "layer": "Site::Site_Analysis_Group::site_analysis_areas",
+    "point": [
+      29.506133797813042,
+      7.2,
+      0.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 590,
+    "text": "L3  Studio        156 m\u00b2",
+    "layer": "Site::Site_Analysis_Group::site_analysis_areas",
+    "point": [
+      29.506133797813042,
+      6.5,
+      0.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 591,
+    "text": "\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500",
+    "layer": "Site::Site_Analysis_Group::site_analysis_areas",
+    "point": [
+      29.506133797813042,
+      5.800000000000001,
+      0.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 592,
+    "text": "GFA TOTAL         702 m\u00b2",
+    "layer": "Site::Site_Analysis_Group::site_analysis_areas",
+    "point": [
+      29.506133797813042,
+      5.1000000000000005,
+      0.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 593,
+    "text": "\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500",
+    "layer": "Site::Site_Analysis_Group::site_analysis_areas",
+    "point": [
+      29.506133797813042,
+      4.4,
+      0.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 594,
+    "text": "Site Area       1,520 m\u00b2",
+    "layer": "Site::Site_Analysis_Group::site_analysis_areas",
+    "point": [
+      29.506133797813042,
+      3.7,
+      0.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 595,
+    "text": "Site Coverage      21%",
+    "layer": "Site::Site_Analysis_Group::site_analysis_areas",
+    "point": [
+      29.506133797813042,
+      3.0,
+      0.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 596,
+    "text": "FAR               0.46",
+    "layer": "Site::Site_Analysis_Group::site_analysis_areas",
+    "point": [
+      29.506133797813042,
+      2.3000000000000007,
+      0.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 598,
+    "text": "LEVEL 01 \u2014 GROUND FLOOR PLAN",
+    "layer": "Site::Site_Analysis_Group::site_analysis",
+    "point": [
+      9.0,
+      -25.905346075982195,
+      0.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 599,
+    "text": "Cliff House Retreat \u00b7  Cabo Bello, Baja California Sur, Mexico",
+    "layer": "Site::Site_Analysis_Group::site_analysis",
+    "point": [
+      9.0,
+      -27.105346075982194,
+      0.3
+    ],
+    "visible": true
+  },
+  {
+    "index": 600,
+    "text": "GARAGE",
+    "layer": "H2_labels::annotations::Labels",
+    "point": [
+      7.5,
+      7.75,
+      0.1
+    ],
+    "visible": true
+  },
+  {
+    "index": 601,
+    "text": "PATIO",
+    "layer": "H2_labels::annotations::Labels",
+    "point": [
+      -3.157304405836272,
+      7.75,
+      0.1
+    ],
+    "visible": true
+  },
+  {
+    "index": 613,
+    "text": "GREAT ROOM",
+    "layer": "user_input::L1_floorplan_labels",
+    "point": [
+      7.5,
+      -9.0,
+      0.6
+    ],
+    "visible": true
+  },
+  {
+    "index": 614,
+    "text": "DINING",
+    "layer": "user_input::L1_floorplan_labels",
+    "point": [
+      6.25,
+      -2.5,
+      0.6
+    ],
+    "visible": true
+  },
+  {
+    "index": 615,
+    "text": "PANTRY",
+    "layer": "user_input::L1_floorplan_labels",
+    "point": [
+      12.25,
+      2.0,
+      0.6
+    ],
+    "visible": true
+  },
+  {
+    "index": 616,
+    "text": "KITCHEN",
+    "layer": "user_input::L1_floorplan_labels",
+    "point": [
+      7.5,
+      1.5,
+      0.6
+    ],
+    "visible": true
+  },
+  {
+    "index": 617,
+    "text": "WC",
+    "layer": "user_input::L1_floorplan_labels",
+    "point": [
+      12.25,
+      -12.0,
+      0.6
+    ],
+    "visible": true
+  },
+  {
+    "index": 618,
+    "text": "SOUTH VERANDA",
+    "layer": "user_input::L1_floorplan_labels",
+    "point": [
+      9.25,
+      -15.5,
+      0.6
+    ],
+    "visible": true
+  },
+  {
+    "index": 619,
+    "text": "WEST VERANDA",
+    "layer": "user_input::L1_floorplan_labels",
+    "point": [
+      3.25,
+      -7.0,
+      0.6
+    ],
+    "visible": true
+  },
+  {
+    "index": 620,
+    "text": "ENTRY",
+    "layer": "user_input::L1_floorplan_labels",
+    "point": [
+      12.25,
+      -4.5,
+      0.6
+    ],
+    "visible": true
+  },
+  {
+    "index": 634,
+    "text": "LIVING / GREAT ROOM",
+    "layer": "H2_plans::L1::labels",
+    "point": [
+      5.5,
+      -8.2,
+      0.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 635,
+    "text": "~35 m\u00b2  \u00b7  open plan",
+    "layer": "H2_plans::L1::labels",
+    "point": [
+      5.5,
+      -8.65,
+      0.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 636,
+    "text": "DINING",
+    "layer": "H2_plans::L1::labels",
+    "point": [
+      5.5,
+      -4.0,
+      0.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 637,
+    "text": "lifestyle zone \u2014 no partition",
+    "layer": "H2_plans::L1::labels",
+    "point": [
+      5.5,
+      -4.45,
+      0.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 638,
+    "text": "KITCHEN",
+    "layer": "H2_plans::L1::labels",
+    "point": [
+      5.5,
+      2.2,
+      0.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 639,
+    "text": "ISLAND / BREAKFAST COUNTER",
+    "layer": "H2_plans::L1::labels",
+    "point": [
+      7.0,
+      -0.45,
+      0.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 640,
+    "text": "ENTRY / FOYER",
+    "layer": "H2_plans::L1::labels",
+    "point": [
+      11.1,
+      -5.2,
+      0.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 641,
+    "text": "UTILITY",
+    "layer": "H2_plans::L1::labels",
+    "point": [
+      11.2,
+      1.8,
+      0.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 642,
+    "text": "TO GARAGE",
+    "layer": "H2_plans::L1::labels",
+    "point": [
+      11.2,
+      3.3,
+      0.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 643,
+    "text": "WC",
+    "layer": "H2_plans::L1::labels",
+    "point": [
+      11.4,
+      -11.5,
+      0.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 644,
+    "text": "CENTRAL COLUMN",
+    "layer": "H2_plans::L1::labels",
+    "point": [
+      11.1,
+      -6.6,
+      0.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 645,
+    "text": "room divider",
+    "layer": "H2_plans::L1::labels",
+    "point": [
+      11.1,
+      -6.85,
+      0.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 647,
+    "text": "SOUTH VERANDA",
+    "layer": "H2_plans::L1::labels",
+    "point": [
+      5.3,
+      -14.9,
+      0.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 648,
+    "text": "30 m\u00b2",
+    "layer": "H2_plans::L1::labels",
+    "point": [
+      5.3,
+      -15.3,
+      0.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 649,
+    "text": "gas \u00b7 low-profile",
+    "layer": "H2_plans::L1::labels",
+    "point": [
+      7.1,
+      -12.42,
+      0.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 650,
+    "text": "FIREPLACE COLUMN",
+    "layer": "H2_plans::L1::labels",
+    "point": [
+      7.1,
+      -12.15,
+      0.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 651,
+    "text": "OPEN PLAN \u2014 no walls between LIVING / DINING / KITCHEN",
+    "layer": "H2_plans::L1::labels",
+    "point": [
+      5.3,
+      -0.95,
+      0.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 654,
+    "text": "GARAGE",
+    "layer": "H2_plans::L1::labels",
+    "point": [
+      7.0,
+      9.5,
+      0.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 655,
+    "text": "~132 m\u00b2",
+    "layer": "H2_plans::L1::labels",
+    "point": [
+      7.0,
+      9.0,
+      0.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 656,
+    "text": "70 m\u00b2",
+    "layer": "H2_plans::L1::labels",
+    "point": [
+      2.047717391304348,
+      -7.225217391304348,
+      0.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 657,
+    "text": "WEST VERANDA",
+    "layer": "H2_plans::L1::labels",
+    "point": [
+      2.047717391304348,
+      -6.775217391304348,
+      0.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 658,
+    "text": "pool deck \u00b7 terrace",
+    "layer": "H2_plans::L1::labels",
+    "point": [
+      -4.5,
+      3.5,
+      0.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 659,
+    "text": "PATIO",
+    "layer": "H2_plans::L1::labels",
+    "point": [
+      -4.5,
+      4.0,
+      0.0
+    ],
+    "visible": true
+  },
+  {
+    "index": 662,
+    "text": "infinity edge",
+    "layer": "user_input::L1_construction_notes",
+    "point": [
+      -5.8,
+      -5.5,
+      0.0
+    ],
+    "visible": true
+  }
+]

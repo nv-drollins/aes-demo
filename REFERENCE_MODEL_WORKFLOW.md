@@ -7,7 +7,7 @@ This is one linear walkthrough. Do not run the Rhino import manually, do not sta
 Run this from a terminal while the demo applications are still open:
 
 ```bash
-cd /home/nvidia/aes-demo
+cd /home/nvidia/aec-demo
 ./scripts/reset-recording-demo.py
 ```
 
@@ -18,8 +18,8 @@ Wait for `RECORDING_DEMO_RESET_OK`. Close FreeCAD, Blender, ComfyUI, Hermes, and
 Begin the recording, open a terminal, and run:
 
 ```bash
-cd /home/nvidia/aes-demo
-./scripts/start-aes-demo.sh
+cd /home/nvidia/aec-demo
+./scripts/start-aec-demo.sh
 ```
 
 Wait for FreeCAD, Blender, and ComfyUI health checks to pass and for the interactive Hermes prompt to appear.
@@ -31,14 +31,14 @@ Paste this into Hermes:
 ```text
 Use the `ingest-rhino-reference` skill for this phase. Run the cliff-house reference intake using the checked project scripts. Rhino is replaced by FreeCAD; never call Rhino, RhinoMCP, or RhinoCommon.
 
-First read /home/nvidia/aes-demo/HERMES.md. Then use the terminal tool exactly once from /home/nvidia/aes-demo to run:
-/home/nvidia/aes-demo/scripts/import-rhino-reference.sh
+First read /home/nvidia/aec-demo/HERMES.md. Then use the terminal tool exactly once from /home/nvidia/aec-demo to run:
+/home/nvidia/aec-demo/scripts/import-rhino-reference.sh
 
 Require RHINO_REFERENCE_EXTRACT_OK and FREECAD_REFERENCE_IMPORT_OK. If either marker is missing, stop and report the real error.
 
 After the import, use FreeCAD MCP execute_code to execute exactly:
 
-exec(compile(open('/home/nvidia/aes-demo/scripts/audit-rhino-reference-freecad.py', encoding='utf-8').read(), '/home/nvidia/aes-demo/scripts/audit-rhino-reference-freecad.py', 'exec'))
+exec(compile(open('/home/nvidia/aec-demo/scripts/audit-rhino-reference-freecad.py', encoding='utf-8').read(), '/home/nvidia/aec-demo/scripts/audit-rhino-reference-freecad.py', 'exec'))
 
 Require REFERENCE_AUDIT_OK. Then use FreeCAD MCP get_view for fitted Isometric and Top views of CliffHouseReference. Treat the document as immutable. Summarize the checked audit and visible reference, then stop.
 ```
@@ -56,7 +56,7 @@ Use FreeCAD MCP tools to inspect the five closed PolylineCurve reference objects
 
 Then use FreeCAD MCP execute_code to execute exactly:
 
-exec(compile(open('/home/nvidia/aes-demo/scripts/build-cliff-house-site-slabs.py', encoding='utf-8').read(), '/home/nvidia/aes-demo/scripts/build-cliff-house-site-slabs.py', 'exec'))
+exec(compile(open('/home/nvidia/aec-demo/scripts/build-cliff-house-site-slabs.py', encoding='utf-8').read(), '/home/nvidia/aec-demo/scripts/build-cliff-house-site-slabs.py', 'exec'))
 
 Require SITE_SLABS_BUILD_OK. Verify building_plan_Shell, garage_plan_Shell, driveway_plan_Shell, patio_stairs_plan_Shell, and patio_plan_Shell in CliffHouseRebuild. Show a fitted Isometric view and stop. Do not create terrain or architecture yet.
 ```
@@ -73,8 +73,8 @@ Use the `build-freecad-massing` skill for this phase. Build the checked upstream
 First verify the five approved site-plan objects still exist. Then use FreeCAD MCP execute_code to execute exactly:
 
 import os
-os.environ['AES_MASSING_SPEC'] = '/home/nvidia/aes-demo/skills/build-freecad-massing/assets/cliff-house-massing-v1.json'
-exec(compile(open('/home/nvidia/aes-demo/skills/build-freecad-massing/scripts/build-freecad-massing.py', encoding='utf-8').read(), '/home/nvidia/aes-demo/skills/build-freecad-massing/scripts/build-freecad-massing.py', 'exec'))
+os.environ['AEC_MASSING_SPEC'] = '/home/nvidia/aec-demo/skills/build-freecad-massing/assets/cliff-house-massing-v1.json'
+exec(compile(open('/home/nvidia/aec-demo/skills/build-freecad-massing/scripts/build-freecad-massing.py', encoding='utf-8').read(), '/home/nvidia/aec-demo/skills/build-freecad-massing/scripts/build-freecad-massing.py', 'exec'))
 
 Do not rewrite the builder and do not create boxes manually. Require FREECAD_MASSING_BUILD_OK with 11 objects.
 
@@ -109,8 +109,8 @@ Use the `handoff-freecad-blender` and `visualize-blender-comfyui` skills for thi
 
 Use FreeCAD MCP get_objects first. Verify the five site-plan objects and all eleven massing objects from the previous phase. If any are missing, stop and report them.
 
-Otherwise use the terminal tool exactly once from /home/nvidia/aes-demo to run:
-/home/nvidia/aes-demo/scripts/run-cliff-house-visualization.py
+Otherwise use the terminal tool exactly once from /home/nvidia/aec-demo to run:
+/home/nvidia/aec-demo/scripts/run-cliff-house-visualization.py
 
 Report these real success markers in order:
 MASSING_PREFLIGHT_OK
@@ -132,8 +132,8 @@ The pipeline exports the actual FreeCAD house massing and terrain, assigns role-
 
 1. Show the FreeCAD massing from the approved Isometric view.
 2. Switch to Blender and show the imported site, house, terrain, camera, materials, and lighting.
-3. Show `/tmp/aes-demo-render/freecad-beauty.png`.
-4. Show `/tmp/aes-demo-render/freecad-depth.png`.
+3. Show `/tmp/aec-demo-render/freecad-beauty.png`.
+4. Show `/tmp/aec-demo-render/freecad-depth.png`.
 5. Show the single validated ComfyUI image opened by the pipeline.
 
 Blender displays the actual FreeCAD geometry. ComfyUI produces one AI concept image constrained by Blender's beauty and depth renders.

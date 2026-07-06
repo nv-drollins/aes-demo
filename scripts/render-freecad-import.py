@@ -6,7 +6,7 @@ from pathlib import Path
 import bpy
 from mathutils import Vector
 
-OUTPUT_DIR = Path(os.environ.get("AES_RENDER_OUTPUT_DIR", "/tmp/aes-demo-render"))
+OUTPUT_DIR = Path(os.environ.get("AEC_RENDER_OUTPUT_DIR", "/tmp/aec-demo-render"))
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 collection = bpy.data.collections.get("FreeCAD Import")
 if collection is None or not collection.objects:

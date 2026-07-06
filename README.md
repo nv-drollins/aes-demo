@@ -1,4 +1,4 @@
-# aes-demo
+# aec-demo
 
 A fully local AI-to-CAD-to-render proof of concept for NVIDIA DGX Spark. Hermes uses a local Qwen model to control FreeCAD and Blender through MCP; Blender turns CAD geometry into beauty/depth renders; ComfyUI uses those images for depth-guided architectural visualization.
 
@@ -31,8 +31,8 @@ Rhino is not required. No cloud inference account or model API key is required.
 ## Start everything
 
 ```bash
-cd /home/nvidia/aes-demo
-./scripts/start-aes-demo.sh
+cd /home/nvidia/aec-demo
+./scripts/start-aec-demo.sh
 ```
 
 This starts FreeCAD, Blender, and ComfyUI, verifies all three local endpoints, then opens standard Hermes chat. ComfyUI is available in the Spark browser at <http://127.0.0.1:8188>.
@@ -43,7 +43,7 @@ The stack launcher registers the source-controlled skill library with Hermes aut
 ./scripts/register-hermes-skills.py
 ```
 
-The repository currently provides five phase skills: `ingest-rhino-reference`, `rebuild-freecad-reference`, `build-freecad-massing`, `handoff-freecad-blender`, and `visualize-blender-comfyui`. They appear in Hermes skill search and slash-command completion after restarting Hermes or running `/reload-skills`.
+The repository currently provides six phase skills: `ingest-rhino-reference`, `rebuild-freecad-reference`, `build-freecad-massing`, `handoff-freecad-blender`, `visualize-blender-comfyui`, and `reconstruct-aec-from-reference`. They appear in Hermes skill search and slash-command completion after restarting Hermes or running `/reload-skills`.
 
 Use `hermes chat`, not `hermes -z`, for MCP work with Hermes 0.18.0. The one-shot path can snapshot tools before background MCP discovery finishes.
 
@@ -62,11 +62,11 @@ hermes mcp test blender
 
 ## Run the pipeline
 
-Use [REFERENCE_MODEL_WORKFLOW.md](REFERENCE_MODEL_WORKFLOW.md) for the recorded end-to-end cliff-house demo, including the checked 11-object massing port. Use [PROMPT_TESTS.md](PROMPT_TESTS.md) for smaller component smoke tests. The bridge is made of three scripts designed to be invoked by Hermes through the relevant MCP:
+Use [REFERENCE_MODEL_WORKFLOW.md](REFERENCE_MODEL_WORKFLOW.md) for the original recorded cliff-house demo, including the checked 11-object massing port. Use [TEMPLATE_DRIVEN_WORKFLOW.md](TEMPLATE_DRIVEN_WORKFLOW.md) for the approved final-reference-to-native-FreeCAD reconstruction demo. Use [PROMPT_TESTS.md](PROMPT_TESTS.md) for smaller component smoke tests. The bridge is made of three scripts designed to be invoked by Hermes through the relevant MCP:
 
-1. `scripts/export-freecad-for-blender.py` runs inside FreeCAD and writes individual OBJ meshes plus `manifest.json` to `/tmp/aes-demo-freecad-export`.
-2. `scripts/import-freecad-bundle.py` runs inside Blender, imports the bundle into the `FreeCAD Import` collection, preserves metadata as custom properties, converts millimetres to metres, and saves `/tmp/aes-demo-freecad-import.blend`.
-3. `scripts/render-freecad-import.py` frames the collection and writes beauty, 16-bit depth, and `.blend` outputs under `/tmp/aes-demo-render`.
+1. `scripts/export-freecad-for-blender.py` runs inside FreeCAD and writes individual OBJ meshes plus `manifest.json` to `/tmp/aec-demo-freecad-export`.
+2. `scripts/import-freecad-bundle.py` runs inside Blender, imports the bundle into the `FreeCAD Import` collection, preserves metadata as custom properties, converts millimetres to metres, and saves `/tmp/aec-demo-freecad-import.blend`.
+3. `scripts/render-freecad-import.py` frames the collection and writes beauty, 16-bit depth, and `.blend` outputs under `/tmp/aec-demo-render`.
 
 Then run the local ComfyUI workflow:
 

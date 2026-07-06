@@ -25,7 +25,7 @@ else:
     if name == 'CliffHouseReference':
         doc = App.getDocument(name)
         metadata = doc.getObject('RhinoImportMetadata')
-        if metadata is None or getattr(metadata, 'ManifestFormat', '') != 'aes-demo-rhino-reference-v1':
+        if metadata is None or getattr(metadata, 'ManifestFormat', '') != 'aec-demo-rhino-reference-v1':
             raise RuntimeError('Refusing to close an unrecognized CliffHouseReference document')
     App.closeDocument(name)
     print('CLOSED_DOCUMENT=' + name)
@@ -51,7 +51,7 @@ rm -f \
   "$ROOT/source_models/cliff_house"/cliff_house_rebuild*.FCBak \
   "$ROOT/CliffHouseRebuild.FCStd" \
   "$ROOT"/CliffHouseRebuild*.FCBak \
-  /tmp/aes-demo-rhino-reference.json \
-  /tmp/aes-demo-cliff-house-reference.png
+  /tmp/aec-demo-rhino-reference.json \
+  /tmp/aec-demo-cliff-house-reference.png
 
 echo "REFERENCE_WORKFLOW_RESET_OK"

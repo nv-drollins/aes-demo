@@ -20,8 +20,8 @@ Construct the house as editable FreeCAD solids after the site plan is approved. 
 
    ```python
    import os
-   os.environ['AES_MASSING_SPEC'] = '/home/nvidia/aes-demo/skills/build-freecad-massing/assets/cliff-house-massing-v1.json'
-   exec(compile(open('/home/nvidia/aes-demo/skills/build-freecad-massing/scripts/build-freecad-massing.py', encoding='utf-8').read(), '/home/nvidia/aes-demo/skills/build-freecad-massing/scripts/build-freecad-massing.py', 'exec'))
+   os.environ['AEC_MASSING_SPEC'] = '/home/nvidia/aec-demo/skills/build-freecad-massing/assets/cliff-house-massing-v1.json'
+   exec(compile(open('/home/nvidia/aec-demo/skills/build-freecad-massing/scripts/build-freecad-massing.py', encoding='utf-8').read(), '/home/nvidia/aec-demo/skills/build-freecad-massing/scripts/build-freecad-massing.py', 'exec'))
    ```
 
 3. Require `FREECAD_MASSING_BUILD_OK` with exactly 11 objects.

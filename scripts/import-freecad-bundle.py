@@ -9,8 +9,8 @@ import bpy
 
 BUNDLE_DIR = Path(
     os.environ.get(
-        "AES_FREECAD_EXPORT_DIR",
-        "/tmp/aes-demo-freecad-export",
+        "AEC_FREECAD_EXPORT_DIR",
+        "/tmp/aec-demo-freecad-export",
     )
 )
 MANIFEST_PATH = BUNDLE_DIR / "manifest.json"
@@ -24,7 +24,7 @@ if collection is None:
     bpy.context.scene.collection.children.link(collection)
 
 clear_scene = os.environ.get(
-    "AES_BLENDER_CLEAR_SCENE",
+    "AEC_BLENDER_CLEAR_SCENE",
     "0",
 ).lower() in {"1", "true", "yes"}
 if clear_scene:
@@ -197,7 +197,7 @@ bpy.context.scene[
     "freecad_source_document"
 ] = manifest["document"]
 bpy.ops.wm.save_as_mainfile(
-    filepath="/tmp/aes-demo-freecad-import.blend"
+    filepath="/tmp/aec-demo-freecad-import.blend"
 )
 print(
     f"BLENDER_IMPORT_OK={MANIFEST_PATH} "

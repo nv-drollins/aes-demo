@@ -9,7 +9,7 @@ Treat the `.3dm` as evidence, not as an editable design. Use the checked extract
 
 ## Prerequisites
 
-- Resolve `ROOT` to the repository containing `HERMES.md`. On the demo Spark, `ROOT=/home/nvidia/aes-demo`.
+- Resolve `ROOT` to the repository containing `HERMES.md`. On the demo Spark, `ROOT=/home/nvidia/aec-demo`.
 - Require a healthy FreeCAD MCP connection and a readable `.3dm` source.
 - Stop if `ROOT/HERMES.md` or `ROOT/scripts/import-rhino-reference.sh` is missing. Do not search the whole filesystem.
 
@@ -27,7 +27,7 @@ Treat the `.3dm` as evidence, not as an editable design. Use the checked extract
 4. Run this exact code through FreeCAD MCP `execute_code`:
 
    ```python
-   exec(compile(open('/home/nvidia/aes-demo/scripts/audit-rhino-reference-freecad.py', encoding='utf-8').read(), '/home/nvidia/aes-demo/scripts/audit-rhino-reference-freecad.py', 'exec'))
+   exec(compile(open('/home/nvidia/aec-demo/scripts/audit-rhino-reference-freecad.py', encoding='utf-8').read(), '/home/nvidia/aec-demo/scripts/audit-rhino-reference-freecad.py', 'exec'))
    ```
 
 5. Require `REFERENCE_AUDIT_OK`. Report the observed units, bounds, type counts, layer paths, object names, and unsupported-object count. Do not substitute expected project counts for the audit output.

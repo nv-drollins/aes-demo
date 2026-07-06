@@ -11,13 +11,13 @@ import Mesh
 
 OUTPUT_DIR = Path(
     os.environ.get(
-        "AES_FREECAD_EXPORT_DIR",
-        "/tmp/aes-demo-freecad-export",
+        "AEC_FREECAD_EXPORT_DIR",
+        "/tmp/aec-demo-freecad-export",
     )
 )
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 DOCUMENT_NAME = os.environ.get(
-    "AES_FREECAD_DOCUMENT",
+    "AEC_FREECAD_DOCUMENT",
     "PromptTest",
 )
 doc = (
@@ -143,7 +143,7 @@ if not objects:
     )
 
 manifest = {
-    "format": "aes-demo-freecad-bundle-v1",
+    "format": "aec-demo-freecad-bundle-v1",
     "document": doc.Name,
     "source_file": doc.FileName,
     "source_units": "millimetres",

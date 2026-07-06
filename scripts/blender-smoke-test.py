@@ -7,7 +7,7 @@ import bpy
 from mathutils import Vector
 
 
-OUTPUT = Path("/tmp/aes-demo-blender-smoke.png")
+OUTPUT = Path("/tmp/aec-demo-blender-smoke.png")
 
 
 def point_at(obj, target):
@@ -58,6 +58,6 @@ scene.camera = camera
 
 scene.world = bpy.data.worlds.new("Smoke Test World")
 scene.world.color = (0.04, 0.04, 0.04)
-bpy.ops.wm.save_as_mainfile(filepath="/tmp/aes-demo-blender-smoke.blend")
+bpy.ops.wm.save_as_mainfile(filepath="/tmp/aec-demo-blender-smoke.blend")
 bpy.ops.render.render(write_still=True)
 print(f"BLENDER_SMOKE_OK={OUTPUT}")

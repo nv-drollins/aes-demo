@@ -14,30 +14,30 @@ import FreeCADGui as Gui
 import Part
 
 
-FORMAT = "aes-demo-freecad-massing-v1"
+FORMAT = "aec-demo-freecad-massing-v1"
 GENERATOR = (
     "skills/build-freecad-massing/scripts/"
     "build-freecad-massing.py"
 )
 SPEC_PATH = Path(
     os.environ.get(
-        "AES_MASSING_SPEC",
-        "/home/nvidia/aes-demo/skills/build-freecad-massing/"
+        "AEC_MASSING_SPEC",
+        "/home/nvidia/aec-demo/skills/build-freecad-massing/"
         "assets/cliff-house-massing-v1.json",
     )
 )
 REFERENCE_DOCUMENT = os.environ.get(
-    "AES_RHINO_REFERENCE_DOCUMENT",
+    "AEC_RHINO_REFERENCE_DOCUMENT",
     "CliffHouseReference",
 )
 REBUILD_DOCUMENT = os.environ.get(
-    "AES_REBUILD_DOCUMENT",
+    "AEC_REBUILD_DOCUMENT",
     "CliffHouseRebuild",
 )
 OUTPUT_PATH = Path(
     os.environ.get(
-        "AES_REBUILD_FCSTD",
-        "/home/nvidia/aes-demo/source_models/cliff_house/"
+        "AEC_REBUILD_FCSTD",
+        "/home/nvidia/aec-demo/source_models/cliff_house/"
         "cliff_house_rebuild.FCStd",
     )
 )

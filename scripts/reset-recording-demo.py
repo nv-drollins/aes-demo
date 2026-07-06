@@ -184,17 +184,17 @@ def main() -> None:
         ROOT / "PromptTest.FCStd",
         ROOT / "HermesSmokeTest.FCStd",
         ROOT / "HermesSmokeTest.png",
-        Path("/tmp/aes-demo-freecad-import.blend"),
-        Path("/tmp/aes-demo-freecad-import.blend1"),
-        Path("/tmp/aes-demo-cliff-house-reference.png"),
+        Path("/tmp/aec-demo-freecad-import.blend"),
+        Path("/tmp/aec-demo-freecad-import.blend1"),
+        Path("/tmp/aec-demo-cliff-house-reference.png"),
     ):
         archived += archive_path(path, "individual-files")
 
     for directory in (
-        Path("/tmp/aes-demo-render"),
-        Path("/tmp/aes-demo-cliff-house-export"),
-        Path("/tmp/aes-demo-freecad-export"),
-        Path("/tmp/aes-demo-regression-export"),
+        Path("/tmp/aec-demo-render"),
+        Path("/tmp/aec-demo-cliff-house-export"),
+        Path("/tmp/aec-demo-freecad-export"),
+        Path("/tmp/aec-demo-regression-export"),
     ):
         archived += archive_path(directory, "runtime-directories")
 
@@ -214,7 +214,7 @@ def main() -> None:
             )
 
     server_output = (
-        ROOT / "comfyui" / "output" / "aes-demo"
+        ROOT / "comfyui" / "output" / "aec-demo"
     )
     if server_output.is_dir():
         for path in sorted(server_output.glob("*.png")):
@@ -224,7 +224,7 @@ def main() -> None:
             )
 
     server_input = (
-        ROOT / "comfyui" / "input" / "aes-demo"
+        ROOT / "comfyui" / "input" / "aec-demo"
     )
     if server_input.is_dir():
         for name in (

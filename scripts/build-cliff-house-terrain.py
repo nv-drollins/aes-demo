@@ -14,21 +14,21 @@ import Mesh
 
 
 REFERENCE_DOCUMENT = os.environ.get(
-    "AES_RHINO_REFERENCE_DOCUMENT",
+    "AEC_RHINO_REFERENCE_DOCUMENT",
     "CliffHouseReference",
 )
 REBUILD_DOCUMENT = os.environ.get(
-    "AES_REBUILD_DOCUMENT",
+    "AEC_REBUILD_DOCUMENT",
     "CliffHouseRebuild",
 )
 OUTPUT_PATH = Path(
     os.environ.get(
-        "AES_REBUILD_FCSTD",
-        "/home/nvidia/aes-demo/source_models/cliff_house/cliff_house_rebuild.FCStd",
+        "AEC_REBUILD_FCSTD",
+        "/home/nvidia/aec-demo/source_models/cliff_house/cliff_house_rebuild.FCStd",
     )
 )
-NX = int(os.environ.get("AES_TERRAIN_NX", "81"))
-NY = int(os.environ.get("AES_TERRAIN_NY", "73"))
+NX = int(os.environ.get("AEC_TERRAIN_NX", "81"))
+NY = int(os.environ.get("AEC_TERRAIN_NY", "73"))
 if NX < 3 or NY < 3:
     raise RuntimeError("Terrain grid dimensions must each be at least 3")
 

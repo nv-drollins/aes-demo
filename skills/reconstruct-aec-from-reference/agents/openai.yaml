@@ -1,0 +1,4 @@
+interface:
+  display_name: "Reconstruct AEC Reference"
+  short_description: "Analyze final CAD and rebuild from a base template"
+  default_prompt: "Use $reconstruct-aec-from-reference to analyze the approved final CAD reference, prepare the project brief, and rebuild from the base template."

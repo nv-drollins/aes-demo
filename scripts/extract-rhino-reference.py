@@ -149,7 +149,7 @@ def extract(source: Path, samples: int) -> dict:
         bounds = [[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
 
     return {
-        "format": "aes-demo-rhino-reference-v1",
+        "format": "aec-demo-rhino-reference-v1",
         "source": {
             "path": str(source.resolve()),
             "sha256": hashlib.sha256(source.read_bytes()).hexdigest(),

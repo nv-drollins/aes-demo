@@ -7,8 +7,8 @@ UVX="${UVX:-$HOME/.hermes/bin/uvx}"
 command -v blender >/dev/null || { echo "Blender is not installed." >&2; exit 1; }
 [[ -f "$UPSTREAM/addon.py" ]] || git clone https://github.com/ahujasid/blender-mcp.git "$UPSTREAM"
 ADDON_DIR="$(blender -b --python-expr \
-  "import bpy; print('AES_ADDON_DIR=' + bpy.utils.user_resource('SCRIPTS', path='addons', create=True))" \
-  2>&1 | sed -n 's/^AES_ADDON_DIR=//p' | tail -1)"
+  "import bpy; print('AEC_ADDON_DIR=' + bpy.utils.user_resource('SCRIPTS', path='addons', create=True))" \
+  2>&1 | sed -n 's/^AEC_ADDON_DIR=//p' | tail -1)"
 [[ -n "$ADDON_DIR" ]] || { echo "Could not determine Blender's add-on directory." >&2; exit 1; }
 install -Dm644 "$UPSTREAM/addon.py" "$ADDON_DIR/blender_mcp.py"
 blender -b --python-expr \

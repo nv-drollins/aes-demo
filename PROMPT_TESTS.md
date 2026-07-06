@@ -65,7 +65,7 @@ Expected: four viewport calls and an observation grounded in the returned images
 ## 7. Save a checkpoint
 
 ```text
-Use the FreeCAD MCP execute_code tool on the GUI thread to recompute PromptTest and save it as /home/nvidia/aes-demo/PromptTest.FCStd. Then use list_documents and get_objects to confirm the document remains open and contains the four expected objects.
+Use the FreeCAD MCP execute_code tool on the GUI thread to recompute PromptTest and save it as /home/nvidia/aec-demo/PromptTest.FCStd. Then use list_documents and get_objects to confirm the document remains open and contains the four expected objects.
 ```
 
 Expected: `PromptTest.FCStd` appears in the workspace. It is ignored by Git.
@@ -80,7 +80,7 @@ Expected: Hermes accurately reports the missing object. This checks that it does
 
 ## 9. Read Blender through Hermes
 
-Start the full stack with `./scripts/start-aes-demo.sh`, then ask:
+Start the full stack with `./scripts/start-aec-demo.sh`, then ask:
 
 ```text
 Use the Blender MCP get_scene_info tool now. Tell me the exact scene name and list every object name and type. Do not use shell commands and do not guess.
@@ -94,9 +94,9 @@ Expected: Hermes reports the live Blender scene using the MCP result.
 Perform this handoff using MCP tools only and make one tool call at a time.
 First use FreeCAD MCP get_objects on PromptTest and verify that BaseSlab, Level1, Level2, and Roof are all present. If any are missing, stop and report which objects are missing; do not run either script.
 Next use FreeCAD MCP execute_code to execute:
-exec(compile(open('/home/nvidia/aes-demo/scripts/export-freecad-for-blender.py', encoding='utf-8').read(), '/home/nvidia/aes-demo/scripts/export-freecad-for-blender.py', 'exec'))
+exec(compile(open('/home/nvidia/aec-demo/scripts/export-freecad-for-blender.py', encoding='utf-8').read(), '/home/nvidia/aec-demo/scripts/export-freecad-for-blender.py', 'exec'))
 Then use Blender MCP execute_blender_code to execute:
-exec(compile(open('/home/nvidia/aes-demo/scripts/import-freecad-bundle.py', encoding='utf-8').read(), '/home/nvidia/aes-demo/scripts/import-freecad-bundle.py', 'exec'))
+exec(compile(open('/home/nvidia/aec-demo/scripts/import-freecad-bundle.py', encoding='utf-8').read(), '/home/nvidia/aec-demo/scripts/import-freecad-bundle.py', 'exec'))
 Finally use Blender MCP get_scene_info and verify that BaseSlab, Level1, Level2, and Roof are present. Do not claim success until both scripts and the readback succeed.
 ```
 
@@ -106,11 +106,11 @@ Expected: `FREECAD_EXPORT_OK` reports four objects, `BLENDER_IMPORT_OK` reports 
 
 ```text
 Use Blender MCP execute_blender_code to execute exactly:
-exec(compile(open('/home/nvidia/aes-demo/scripts/render-freecad-import.py', encoding='utf-8').read(), '/home/nvidia/aes-demo/scripts/render-freecad-import.py', 'exec'))
+exec(compile(open('/home/nvidia/aec-demo/scripts/render-freecad-import.py', encoding='utf-8').read(), '/home/nvidia/aec-demo/scripts/render-freecad-import.py', 'exec'))
 Report the BLENDER_RENDER_OK output. Do not use shell commands.
 ```
 
-Expected: `/tmp/aes-demo-render/freecad-beauty.png` and `/tmp/aes-demo-render/freecad-depth.png`. The beauty is 1024x768 RGBA; depth is 1024x768 16-bit grayscale.
+Expected: `/tmp/aec-demo-render/freecad-beauty.png` and `/tmp/aec-demo-render/freecad-depth.png`. The beauty is 1024x768 RGBA; depth is 1024x768 16-bit grayscale.
 
 ## 12. Generate the ComfyUI visualization
 
@@ -124,7 +124,7 @@ comfyui/.venv/bin/python scripts/comfy-depth-render.py \
 Or explicitly authorize Hermes to run only that checked-in command:
 
 ```text
-Use the terminal tool to run this exact command from /home/nvidia/aes-demo and return its COMFY_IMAGE_OK and final COMFY_DEPTH_OK lines:
+Use the terminal tool to run this exact command from /home/nvidia/aec-demo and return its COMFY_IMAGE_OK and final COMFY_DEPTH_OK lines:
 comfyui/.venv/bin/python scripts/comfy-depth-render.py --prompt "professional architectural visualization, contemporary timber and concrete pavilion, landscaped site, soft daylight"
 Do not modify any files or run any other command.
 ```

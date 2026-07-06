@@ -14,13 +14,13 @@ import Part
 
 REFERENCE_NAME = "CliffHouseReference"
 REBUILD_NAME = os.environ.get(
-    "AES_REBUILD_DOCUMENT",
+    "AEC_REBUILD_DOCUMENT",
     "CliffHouseRebuild",
 )
 OUTPUT = Path(
     os.environ.get(
-        "AES_REBUILD_FCSTD",
-        "/home/nvidia/aes-demo/source_models/cliff_house/cliff_house_rebuild.FCStd",
+        "AEC_REBUILD_FCSTD",
+        "/home/nvidia/aec-demo/source_models/cliff_house/cliff_house_rebuild.FCStd",
     )
 )
 THICKNESS = 50.0

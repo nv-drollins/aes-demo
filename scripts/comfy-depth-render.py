@@ -69,7 +69,7 @@ def upload(path, remote_name):
         response = requests.post(
             f"{BASE_URL}/upload/image",
             files={"image": (remote_name, image, "image/png")},
-            data={"type": "input", "subfolder": "aes-demo", "overwrite": "true"},
+            data={"type": "input", "subfolder": "aec-demo", "overwrite": "true"},
             timeout=120,
         )
     response.raise_for_status()
@@ -78,8 +78,8 @@ def upload(path, remote_name):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--beauty", type=Path, default=Path("/tmp/aes-demo-render/freecad-beauty.png"))
-    parser.add_argument("--depth", type=Path, default=Path("/tmp/aes-demo-render/freecad-depth.png"))
+    parser.add_argument("--beauty", type=Path, default=Path("/tmp/aec-demo-render/freecad-beauty.png"))
+    parser.add_argument("--depth", type=Path, default=Path("/tmp/aec-demo-render/freecad-depth.png"))
     parser.add_argument("--prompt", default="professional architectural visualization, contemporary small pavilion, realistic concrete and timber materials, landscaped site, soft daylight, physically based rendering, highly detailed")
     parser.add_argument("--negative", default="distorted architecture, warped walls, extra buildings, text, watermark, people, low resolution, blurry, oversaturated")
     parser.add_argument("--seed", type=int, default=20260702)

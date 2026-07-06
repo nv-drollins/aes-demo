@@ -64,7 +64,7 @@ The bridge intentionally treats FreeCAD as the geometry authority and Blender as
 
 Each visible FreeCAD shape is tessellated to an individual OBJ. A JSON manifest preserves its internal name, label, FreeCAD type, color, bounding box, source document, source units, and the `0.001` millimetre-to-metre Blender scale. Blender imports these objects into a dedicated collection and stores FreeCAD identity fields as custom properties.
 
-Temporary interchange files live at `/tmp/aes-demo-freecad-export`. Override this in both applications with the `AES_FREECAD_EXPORT_DIR` environment variable if needed.
+Temporary interchange files live at `/tmp/aec-demo-freecad-export`. Override this in both applications with the `AEC_FREECAD_EXPORT_DIR` environment variable if needed.
 
 ## ComfyUI
 

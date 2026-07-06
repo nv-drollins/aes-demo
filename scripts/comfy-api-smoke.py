@@ -13,7 +13,7 @@ def upload(path, remote_name):
         response = requests.post(
             f"{BASE_URL}/upload/image",
             files={"image": (remote_name, image, "image/png")},
-            data={"type": "input", "subfolder": "aes-demo", "overwrite": "true"},
+            data={"type": "input", "subfolder": "aec-demo", "overwrite": "true"},
             timeout=60,
         )
     response.raise_for_status()
@@ -22,16 +22,16 @@ def upload(path, remote_name):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--beauty", type=Path, default=Path("/tmp/aes-demo-render/freecad-beauty.png"))
-    parser.add_argument("--depth", type=Path, default=Path("/tmp/aes-demo-render/freecad-depth.png"))
+    parser.add_argument("--beauty", type=Path, default=Path("/tmp/aec-demo-render/freecad-beauty.png"))
+    parser.add_argument("--depth", type=Path, default=Path("/tmp/aec-demo-render/freecad-depth.png"))
     args = parser.parse_args()
     beauty = upload(args.beauty, "freecad-beauty.png")
     depth = upload(args.depth, "freecad-depth.png")
     graph = {
         "1": {"class_type": "LoadImage", "inputs": {"image": beauty}},
-        "2": {"class_type": "SaveImage", "inputs": {"images": ["1", 0], "filename_prefix": "aes-demo/api-beauty"}},
+        "2": {"class_type": "SaveImage", "inputs": {"images": ["1", 0], "filename_prefix": "aec-demo/api-beauty"}},
         "3": {"class_type": "LoadImage", "inputs": {"image": depth}},
-        "4": {"class_type": "SaveImage", "inputs": {"images": ["3", 0], "filename_prefix": "aes-demo/api-depth"}},
+        "4": {"class_type": "SaveImage", "inputs": {"images": ["3", 0], "filename_prefix": "aec-demo/api-depth"}},
     }
     response = requests.post(
         f"{BASE_URL}/prompt",
