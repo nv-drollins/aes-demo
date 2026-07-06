@@ -8,9 +8,16 @@ export DISPLAY="${DISPLAY:-:1}"
 export XAUTHORITY="${XAUTHORITY:-/run/user/$(id -u)/gdm/Xauthority}"
 export DBUS_SESSION_BUS_ADDRESS="${DBUS_SESSION_BUS_ADDRESS:-unix:path=/run/user/$(id -u)/bus}"
 
-if pgrep -f "$FREECAD" >/dev/null; then
-  echo "FreeCAD is already running."
-  exit 0
+"$ROOT/scripts/repair-freecad-mcp-links.sh"
+
+if pgrep -x freecad >/dev/null; then
+  if "$ROOT/scripts/check-freecad-rpc.py" >/dev/null 2>&1; then
+    echo "FreeCAD is already running and its MCP RPC is healthy."
+    exit 0
+  fi
+  echo "FreeCAD is running, but its MCP RPC is unavailable." >&2
+  echo "The add-on links are now correct; close FreeCAD and rerun this launcher." >&2
+  exit 1
 fi
 
 nohup "$FREECAD" >"$ROOT/freecad.log" 2>&1 &

@@ -22,6 +22,11 @@ The ARM64 AppImage is stored under `apps/` and is excluded from Git. The FreeCAD
 
 The add-on auto-starts an XML-RPC server on `127.0.0.1:9875`. Remote connections are disabled.
 
+Each FreeCAD launch runs `scripts/repair-freecad-mcp-links.sh`. This refreshes
+the add-on and settings symlinks after the repository is moved or renamed. If
+FreeCAD was already open with stale links, close it once and rerun the stack
+launcher.
+
 ## Hermes MCP
 
 Hermes starts the cloned Python MCP server over stdio using `uv`. The server connects to FreeCAD's local XML-RPC endpoint.
